@@ -1,0 +1,366 @@
+<?xml version="1.0" ?>
+<!-- Asset -->
+<definition id="asset" parentId="justiceBgObject" isAbstract="true" type="object"> 
+	<fields>
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Product specific properties -->
+		<field name="type" type="an..180">
+			<value>ASSET</value>
+		</field>
+		<field name="rdf:type" type="uri">
+			<value>http://ittruse.ittbg.com/ontology/inventar#Asset</value>
+		</field>
+		<field name="dateOfPurchase" 		type="date" order="290" label="dateOfPurchase.label" displayType="editable" previewEmpty="true" uri="inv:dateOfPurchase" />
+		<field name="operationStartDate" 	type="date" order="300" label="operationStartDate.label" displayType="editable" previewEmpty="true" uri="inv:operationStartDate" />
+		<field name="operationEndDate"		type="date" order="310" label="operationEndDate.label" displayType="editable" previewEmpty="true" uri="inv:operationEndDate" />
+		<field name="writeOffDate" 			type="date" order="320" label="writeOffDate.label" displayType="editable" previewEmpty="true" uri="inv:writeOffDate" />
+		<field name="wayOfAcquisition" 		type="an..50" order="330" label="wayOfAcquisition.label" codelist="CL107" previewEmpty="true" displayType="editable" uri="inv:wayOfAcquisition" />
+		<field name="priceOfAcquisition" 	type="n..12,2" order="340" label="priceOfAcquisition.label" displayType="editable" previewEmpty="true" uri="inv:priceOfAcquisition" />
+		<field name="underGuarantee" 		type="an..50" order="305" codelist="137" label="underGuarantee.label" displayType="editable" previewEmpty="true" uri="inv:underGuarantee" />
+		<field name="guaranteeEndDate" 		type="date" order="306" label="guaranteeEndDate.label" displayType="editable" uri="inv:guaranteeEndDate">
+			<condition id="hideGuaranteeEndDate" renderAs="HIDDEN">[underGuarantee] NOT IN ('BOOL_YES')</condition>
+		</field>
+		<field name="status" type="an..50" codelist="CL117">
+			<value>IN_OPERATION</value>
+		</field>
+		<field name="supplierName" 		type="an..2000" order="401" label="supplierName.label" displayType="editable" previewEmpty="true" uri="inv:supplierName" />
+	    <field name="productHasContactPerson" type="an..2000" order="250" label="productHasContactPerson.label" displayType="editable" previewEmpty="true" uri="inv:productHasContactPerson" />	
+		<field name="producerName"		type="an..2000" order="381" label="producerName.label" displayType="editable" previewEmpty="true" uri="inv:producerName" />
+		<field name="isSupportedByDescription" type="an..2000" order="411" label="isSupportedByDescription.label" displayType="editable" previewEmpty="true" uri="inv:isSupportedByDescription" />
+		<field name="inventoryNumber" 	type="an..2000" order="440" label="inventoryNumber.label" displayType="editable" mandatory="true" previewEmpty="true" uri="inv:inventoryNumber" />
+		<field name="inv:isProducedBy"	type="uri" order="380" label="isProducedBy.label" displayType="editable" previewEmpty="true" uri="inv:isProducedBy" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Provider</control-param>
+			</control>
+		</field>
+		<field name="architectureDescription" type="an..2000" order="460" label="architectureDescription.label" displayType="editable" previewEmpty="true" uri="inv:architectureDescription" />
+		<field name="isSuppliedBy" 		type="uri" order="400" label="isSuppliedBy.label" displayType="editable" previewEmpty="true" uri="inv:isSuppliedBy">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Provider</control-param>
+			</control>
+		</field>
+		<field name="isSupportedBy" type="uri" order="410" label="isSupportedBy.label" displayType="editable" previewEmpty="true" uri="inv:isSupportedBy">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Provider</control-param>
+			</control>
+		</field>
+		<field name="usedByService" type="uri" order="420" label="usedByService.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:usedByService">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:InformationalService</control-param>
+			</control>
+		</field>
+		<field name="usedByServiceName" type="an..2000" order="430" label="usedByServiceName.label" displayType="editable" previewEmpty="true" uri="inv:usedByServiceName" />
+		<field name="usedByEmployee" type="uri" order="230" label="usedByEmployee.label" displayType="editable"  previewEmpty="true" uri="inv:usedByEmployee">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Employee</control-param>
+			</control>
+		</field>
+		<field name="hasResponsibleUser" type="uri" order="240" label="hasResponsibleUser.label" displayType="editable"  previewEmpty="true" multiValued="true" uri="inv:hasResponsibleUser">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Employee</control-param>
+			</control>
+		</field>
+		<field name="hasArchitecture" type="uri" order="450" label="hasArchitecture.label" displayType="editable" previewEmpty="true" uri="inv:hasArchitecture">
+			<control id="PICKER">
+				<control-param id="range" name="range">emf:Document</control-param>
+			</control>
+		</field>
+		
+		<field name="hasProprietor" type="uri" order="270" label="hasProprietor.label" mandatory="true" displayType="editable" multiValued="false" previewEmpty="true" uri="inv:hasProprietor">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:GovernmentStructure</control-param>
+			</control>
+		</field>
+		
+		<field name="assetInBuilding" type="uri" order="280" label="assetInBuilding.label" mandatory="false" displayType="editable" previewEmpty="true" uri="inv:assetInBuilding">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Building</control-param>
+			</control>
+		</field>
+		
+		<field name="assetInPremises" type="uri" order="260" label="assetInPremises.label" mandatory="true" displayType="editable" previewEmpty="true" uri="inv:assetInPremises">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Premises</control-param>
+			</control>
+		</field>
+	
+		<field name="hasDocument" type="uri" order="470" label="hasDocument.label" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:hasDocument">
+			<control id="PICKER">
+				<control-param id="range" name="range">emf:Document</control-param>
+			</control>
+		</field>
+		<field name="hasContract" type="uri" order="480" label="hasContract.label" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:hasContract">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Contract</control-param>
+			</control>
+		</field>		
+	</fields>
+	
+	<transitions>
+		<!-- Common transitions-->
+		<transition id="editDetails" label="editDetails.label" eventId="editDetails" purpose="editDetails" />
+		<transition id="saveAsTemplate" label="saveAsTemplate.label" eventId="saveAsTemplate" purpose="saveAsTemplate" />
+		<transition id="move" label="move.label" eventId="move" purpose="move" />
+		<transition id="lock" label="lock.label" eventId="lock" purpose="lock" />
+		<transition id="unlock" label="unlock.label" eventId="unlock" purpose="unlock" />
+		<transition id="managePermissions" label="managePermissions.label" eventId="managePermissions" purpose="managePermissions" />
+		<transition id="addThumbnail" label="addThumbnail.label" eventId="addThumbnail" purpose="addThumbnail" />	
+		<transition id="print" label="print.label" eventId="print" purpose="print" />
+		<transition id="printTab" label="printTab.label" eventId="printTab" purpose="printTab" />
+		<transition id="exportTabPDF" label="exportTabPDF.label" eventId="exportTabPDF" purpose="exportTabPDF" />
+		<transition id="exportPDF" label="exportPDF.label" eventId="exportPDF" purpose="exportPDF" />
+		<transition id="exportWord" label="exportWord.label" eventId="exportWord" purpose="exportWord" />
+		<transition id="exportTabWord" label="exportTabWord.label" eventId="exportTabWord" purpose="exportTabWord" />
+		<transition id="delete" label="delete.label" eventId="delete" purpose="delete" confirmation="confirmation.action"/>
+		<transition id="clone" label="clone.label" eventId="clone" purpose="clone" tooltip="clone.tooltip" />
+		<transition id="createInContext" eventId="createInContext" purpose="createInContext" label="createInContext.label" displayType="hidden" />
+		<transition id="addWatchers" label="addWatchers.label" eventId="addWatchers" purpose="addRelation" tooltip="addWatchers.tooltip">
+			<fields>
+				<field name="addWatchersConfig" type="an10">
+					<value>{
+								"predefinedTypes" : ["emf:User"],
+								"selection" : "multiple",
+								"relation" : ["emf:hasWatcher"],
+								"implicitParams" : {
+									"removeExisting" : false
+								}
+							}
+					</value>
+					<control id="configuration" />
+				</field>
+			</fields>
+		</transition>
+		
+		<transition id="realocateAsset" label="realocateAsset.label" eventId="realocateAsset" purpose="addRelation" tooltip="realocateAsset.tooltip">
+			<fields>
+				<field name="realocateAssetConfig" type="an10">
+					<value>{
+								"predefinedTypes" : ["inv:Premises"],
+								"selection" : "multiple",
+								"relation" : ["inv:assetInPremises"],
+								"implicitParams" : {
+									"removeExisting" : false
+								}
+							}
+					</value>
+					<control id="configuration" />
+				</field>
+			</fields>
+		</transition>		
+		
+		<!-- Specific transitions -->
+		<transition id="releaseInOperation" label="releaseInOperation.label" eventId="releaseInOperation" purpose="transition" />
+		<transition id="removeFromOperation" label="removeFromOperation.label" eventId="removeFromOperation" purpose="transition" />
+		
+	</transitions>
+	
+	<stateTransitions>	
+		<stateTransition from="INIT" transition="create" to="IN_OPERATION" />
+		<stateTransition from="INIT" transition="clone" to="IN_OPERATION"/>
+		
+		<stateTransition from="IN_OPERATION" transition="editDetails" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="saveAsTemplate" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="move" to="IN_OPERATION"/>
+		<stateTransition from="IN_OPERATION" transition="lock" to="IN_OPERATION"/>
+		<stateTransition from="IN_OPERATION" transition="unlock" to="IN_OPERATION"/>
+		<stateTransition from="IN_OPERATION" transition="managePermissions" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="addThumbnail" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="print" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="printTab" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="exportTabPDF" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="exportPDF" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="exportWord" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="exportTabWord" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="addWatchers" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="clone" to="IN_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="createInContext" to="IN_OPERATION"/>
+		<stateTransition from="IN_OPERATION" transition="realocateAsset" to="IN_OPERATION"/>
+		<stateTransition from="IN_OPERATION" transition="removeFromOperation" to="OUT_OF_OPERATION" />
+		<stateTransition from="IN_OPERATION" transition="delete" to="DELETED" />
+		<stateTransition from="IN_OPERATION" transition="revertVersion" to="IN_OPERATION" />
+		
+		
+		
+		<stateTransition from="OUT_OF_OPERATION" transition="editDetails" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="saveAsTemplate" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="move" to="OUT_OF_OPERATION"/>
+		<stateTransition from="OUT_OF_OPERATION" transition="lock" to="OUT_OF_OPERATION"/>
+		<stateTransition from="OUT_OF_OPERATION" transition="unlock" to="OUT_OF_OPERATION"/>
+		<stateTransition from="OUT_OF_OPERATION" transition="managePermissions" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="addThumbnail" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="print" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="printTab" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="exportTabPDF" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="exportPDF" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="exportWord" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="exportTabWord" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="addWatchers" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="clone" to="OUT_OF_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="releaseInOperation" to="IN_OPERATION" />
+		<stateTransition from="OUT_OF_OPERATION" transition="createInContext" to="OUT_OF_OPERATION"/>
+		<stateTransition from="OUT_OF_OPERATION" transition="realocateAsset" to="OUT_OF_OPERATION"/>
+		<stateTransition from="OUT_OF_OPERATION" transition="delete" to="DELETED" />
+		<stateTransition from="OUT_OF_OPERATION" transition="revertVersion" to="OUT_OF_OPERATION"/>
+		
+		<stateTransition from="TO_BE_RECALLED" transition="editDetails" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="saveAsTemplate" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="move" to="TO_BE_RECALLED"/>
+		<stateTransition from="TO_BE_RECALLED" transition="lock" to="TO_BE_RECALLED"/>
+		<stateTransition from="TO_BE_RECALLED" transition="unlock" to="TO_BE_RECALLED"/>
+		<stateTransition from="TO_BE_RECALLED" transition="managePermissions" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="addThumbnail" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="print" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="printTab" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="exportTabPDF" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="exportPDF" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="exportWord" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="clone" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="exportTabWord" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="addWatchers" to="TO_BE_RECALLED" />
+		<stateTransition from="TO_BE_RECALLED" transition="realocateAsset" to="TO_BE_RECALLED"/>
+		<stateTransition from="TO_BE_RECALLED" transition="createInContext" to="TO_BE_RECALLED"/>
+		<stateTransition from="TO_BE_RECALLED" transition="delete" to="DELETED" />
+		<stateTransition from="TO_BE_RECALLED" transition="revertVersion" to="TO_BE_RECALLED"/>
+		
+		<stateTransition from="RECALLED" transition="editDetails" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="saveAsTemplate" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="move" to="RECALLED"/>
+		<stateTransition from="RECALLED" transition="lock" to="RECALLED"/>
+		<stateTransition from="RECALLED" transition="unlock" to="RECALLED"/>
+		<stateTransition from="RECALLED" transition="managePermissions" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="addThumbnail" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="print" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="printTab" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="exportTabPDF" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="exportPDF" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="exportWord" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="exportTabWord" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="addWatchers" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="clone" to="RECALLED" />
+		<stateTransition from="RECALLED" transition="createInContext" to="RECALLED"/>
+		<stateTransition from="RECALLED" transition="realocateAsset" to="RECALLED"/>
+		<stateTransition from="RECALLED" transition="delete" to="DELETED" />
+		<stateTransition from="RECALLED" transition="revertVersion" to="RECALLED" />
+		
+		<stateTransition from="CURRENT" transition="editDetails" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="saveAsTemplate" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="move" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="lock" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="unlock" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="managePermissions" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="addThumbnail" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="print" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="printTab" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportTabPDF" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportPDF" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportWord" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportTabWord" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="addWatchers" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="clone" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="createInContext" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="realocateAsset" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="delete" to="DELETED" />
+		<stateTransition from="CURRENT" transition="revertVersion" to="CURRENT" />
+		
+		<stateTransition from="OUTDATED" transition="editDetails" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="saveAsTemplate" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="move" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="lock" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="unlock" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="managePermissions" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="addThumbnail" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="print" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="printTab" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportTabPDF" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportPDF" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportWord" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportTabWord" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="addWatchers" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="clone" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="realocateAsset" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="createInContext" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="delete" to="DELETED" />
+		<stateTransition from="OUTDATED" transition="revertVersion" to="OUTDATED" />
+		
+		<stateTransition from="OBSOLETE" transition="editDetails" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="saveAsTemplate" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="move" to="OBSOLETE"/>
+		<stateTransition from="OBSOLETE" transition="lock" to="OBSOLETE"/>
+		<stateTransition from="OBSOLETE" transition="unlock" to="OBSOLETE"/>
+		<stateTransition from="OBSOLETE" transition="managePermissions" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="addThumbnail" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="print" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="printTab" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="exportTabPDF" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="exportPDF" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="exportWord" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="clone" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="exportTabWord" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="addWatchers" to="OBSOLETE" />
+		<stateTransition from="OBSOLETE" transition="releaseInOperation" to="IN_OPERATION" />
+		<stateTransition from="OBSOLETE" transition="realocateAsset" to="OBSOLETE"/>
+		<stateTransition from="OBSOLETE" transition="createInContext" to="OBSOLETE"/>
+		<stateTransition from="OBSOLETE" transition="delete" to="DELETED" />
+		
+		<stateTransition from="FOR_DESTRUCTION" transition="editDetails" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="saveAsTemplate" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="move" to="FOR_DESTRUCTION"/>
+		<stateTransition from="FOR_DESTRUCTION" transition="lock" to="FOR_DESTRUCTION"/>
+		<stateTransition from="FOR_DESTRUCTION" transition="unlock" to="FOR_DESTRUCTION"/>
+		<stateTransition from="FOR_DESTRUCTION" transition="managePermissions" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="addThumbnail" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="print" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="printTab" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="exportTabPDF" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="exportPDF" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="exportWord" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="exportTabWord" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="addWatchers" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="clone" to="FOR_DESTRUCTION" />
+		<stateTransition from="FOR_DESTRUCTION" transition="createInContext" to="FOR_DESTRUCTION"/>
+		<stateTransition from="FOR_DESTRUCTION" transition="realocateAsset" to="FOR_DESTRUCTION"/>
+		<stateTransition from="FOR_DESTRUCTION" transition="delete" to="DELETED" />
+		<stateTransition from="FOR_DESTRUCTION" transition="revertVersion" to="FOR_DESTRUCTION" />		
+				
+		<stateTransition from="DESTROYED" transition="editDetails" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="saveAsTemplate" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="move" to="DESTROYED"/>
+		<stateTransition from="DESTROYED" transition="lock" to="DESTROYED"/>
+		<stateTransition from="DESTROYED" transition="unlock" to="DESTROYED"/>
+		<stateTransition from="DESTROYED" transition="managePermissions" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="addThumbnail" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="print" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="printTab" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="exportTabPDF" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="exportPDF" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="exportWord" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="exportTabWord" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="addWatchers" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="clone" to="DESTROYED" />
+		<stateTransition from="DESTROYED" transition="createInContext" to="DESTROYED"/>
+		<stateTransition from="DESTROYED" transition="realocateAsset" to="DESTROYED"/>
+		<stateTransition from="DESTROYED" transition="delete" to="DELETED" />
+		<stateTransition from="DESTROYED" transition="revertVersion" to="DESTROYED" />			
+		
+		<stateTransition from="DONATED" transition="editDetails" to="DONATED" />
+		<stateTransition from="DONATED" transition="saveAsTemplate" to="DONATED" />
+		<stateTransition from="DONATED" transition="move" to="DONATED"/>
+		<stateTransition from="DONATED" transition="lock" to="DONATED"/>
+		<stateTransition from="DONATED" transition="unlock" to="DONATED"/>
+		<stateTransition from="DONATED" transition="managePermissions" to="DONATED" />
+		<stateTransition from="DONATED" transition="addThumbnail" to="DONATED" />
+		<stateTransition from="DONATED" transition="print" to="DONATED" />
+		<stateTransition from="DONATED" transition="printTab" to="DONATED" />
+		<stateTransition from="DONATED" transition="exportTabPDF" to="DONATED" />
+		<stateTransition from="DONATED" transition="exportPDF" to="DONATED" />
+		<stateTransition from="DONATED" transition="exportWord" to="DONATED" />
+		<stateTransition from="DONATED" transition="exportTabWord" to="DONATED" />
+		<stateTransition from="DONATED" transition="addWatchers" to="DONATED" />
+		<stateTransition from="DONATED" transition="clone" to="DONATED" />
+		<stateTransition from="DONATED" transition="createInContext" to="DONATED"/>
+		<stateTransition from="DONATED" transition="realocateAsset" to="DONATED"/>
+		<stateTransition from="DONATED" transition="delete" to="DELETED" />
+		<stateTransition from="DONATED" transition="revertVersion" to="DONATED" />				
+    </stateTransitions>
+</definition>

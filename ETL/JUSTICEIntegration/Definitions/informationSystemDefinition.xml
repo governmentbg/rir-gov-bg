@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!-- Information system -->
+<definition id="informationSystem" parentId="software" isAbstract="false" type="object"> 
+	<fields>
+		<!-- Information system specific properties -->
+		<field name="type" type="an..180"><value>INFORMATION_SYSTEM</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#InformationSystem</value></field>
+		
+		<field name="dataDescription" type="an..2000" label="dataDescription.label" order="104" displayType="editable" previewEmpty="true" uri="inv:dataDescription" />
+		<field name="legalGround" type="an..2000" label="legalGround.label" order="105" displayType="editable" previewEmpty="true" uri="inv:legalGround" />
+		<field name="metadata" type="an..2000" label="metadata.label" order="251" displayType="editable"  previewEmpty="true" uri="inv:metadata"/>
+		<field name="dataFormat" type="an..2000" label="dataFormat.label" order="251" displayType="editable" previewEmpty="true" uri="inv:dataFormat" />
+		<field name="dataStructure" type="an..50" label="dataStructure.label" order="251" displayType="editable" codelist="CL110" previewEmpty="true" uri="inv:dataStructure" />
+		<field name="dataLocation" type="an..2000" label="dataLocation.label" order="251" displayType="editable" previewEmpty="true" uri="inv:dataLocation" />
+		<field name="access" type="an..50" label="access.label" codelist="CL111" order="251" displayType="editable" previewEmpty="true" uri="inv:access" />
+		<field name="dataUpdate" type="an..50" label="dataUpdate.label" codelist="CL112" order="251" displayType="editable"  previewEmpty="true" uri="inv:dataUpdate" />
+		<field name="periodOfUpdate" type="an..50" label="periodOfUpdate.label" codelist="CL113" order="251" displayType="editable"  previewEmpty="true" uri="inv:periodOfUpdate" />
+		<field name="personalDetails" type="an..50" label="personalDetails.label" codelist="CL114" order="251" displayType="editable"  previewEmpty="true" uri="inv:personalDetails" />
+		<field name="personalDataType" type="an..2000" label="personalDataType.label" order="251" displayType="editable" uri="inv:personalDataType">
+			<condition id="hidePersonalDataType" renderAs="HIDDEN">[personalDetails] IN ('CPD02')</condition>
+		</field>		
+		<field name="autoDataExchange" type="an..2000" label="autoDataExchange.label" order="251" displayType="editable" previewEmpty="true" uri="inv:autoDataExchange" />	
+		<field name="organizationsWithAccess" type="n..4" label="organizationsWithAccess.label" order="105" displayType="editable" previewEmpty="true" uri="inv:organizationsWithAccess" />
+		<field name="supportStartDate" type="date" label="supportStartDate.label" order="289" displayType="editable" previewEmpty="true" uri="inv:supportStartDate" />
+		<field name="developmentInfo" type="an..2000" label="developmentInfo.label" order="106" displayType="editable" previewEmpty="true" uri="inv:developmentInfo" />
+		
+			
+	</fields>
+</definition>

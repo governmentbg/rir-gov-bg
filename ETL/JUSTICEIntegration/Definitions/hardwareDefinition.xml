@@ -1,0 +1,252 @@
+<?xml version="1.0" ?>
+<!-- Hardware product -->
+<definition id="hardware" parentId="asset" isAbstract="true" type="object"> 
+	<fields>	
+		<field name="default_header" type="ANY" label="HARDWARE_DEFAULT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="compact_header" type="an..4096" label="HARDWARE_COMPACT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="breadcrumb_header" type="an..4096" label="HARDWARE_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="tooltip_header" type="an..4096" label="HARDWARE_TOOLTIP_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		
+		<!-- Hardware specific properties -->
+		<field name="type" type="an..180"><value>HARDWARE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Hardware</value></field>
+		
+		<field name="model" type="an..2000" label="model.label" mandatory="true" displayType="editable" uri="inv:model" />
+		<field name="productNumber" type="an..100" order="436" label="productNumber.label" displayType="editable" uri="inv:productNumber" />
+		<field name="serialNumber" type="an..100" order="438" label="serialNumber.label" mandatory="true" displayType="editable" uri="inv:serialNumber" />
+		<field name="powerSupplyType" type="an..2000"   label="powerSupplyType.label" displayType="editable" uri="inv:powerSupplyType" />
+		<field name="powerSupplyNumbers" type="n..2" label="powerSupplyNumbers.label" displayType="editable" uri="inv:powerSupplyNumbers" />
+		<field name="performanceIndicator" type="an..2000" label="performanceIndicator.label" displayType="editable" uri="inv:performanceIndicator" />
+		<field name="interfaceType" type="an..2000" label="interfaceType.label" displayType="editable" uri="inv:interfaceType" />
+		<field name="installedSoftwareName" type="an..2000" order="432" label="installedSoftwareName.label" displayType="editable" uri="inv:installedSoftwareName" />
+		
+		<field name="hasInstalledSoftware" type="uri" order="431" label="hasInstalledSoftware.label" displayType="editable" multiValued="true" uri="inv:hasInstalledSoftware">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Software</control-param>
+			</control>
+		</field>
+		<field name="usedByNetwork" type="uri" label="usedByNetwork.label" displayType="editable" multiValued="true" uri="inv:usedByNetwork">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:ComputerNetwork</control-param>
+			</control>
+		</field>
+		
+		<field name="hasPeripheral" type="uri" label="hasPeripheral.label" displayType="editable" multiValued="true" uri="inv:hasPeripheral">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:PeripheralDevice</control-param>
+			</control>
+		</field>	
+		<field name="usedByNetworkDescription" type="an..2000" label="usedByNetworkDescription.label" displayType="editable" uri="inv:usedByNetworkDescription" />
+	</fields>
+	
+	<labels>
+		<label id="HARDWARE_TOOLTIP_HEADER">
+			<value lang="en"><![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+					<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+					<span class="tooltip-row">
+					<label>Produced By</label>
+						<span data-property="producerName">${get([producerName])}</span>
+					</span>					
+					<span class="tooltip-row">
+					<label>Model </label>
+						<span data-property="model">${get([model])}</span>
+					</span>
+					<span class="tooltip-row">
+					<label>Inventory Number</label>
+						<span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+					</span>
+					<label>Prod. Number</label>
+						<span data-property="productNumber">${get([productNumber])}</span>
+					</span>
+					<span class="tooltip-row">
+					<label>Has Proprietor</label>
+						${objectProperty(${get([hasProprietor])})}
+					</span>
+					<span class="tooltip-row">
+					<label>Premises</label>
+						${objectProperty(${get([assetInPremises])})}
+					</span>
+				</span>
+			)})}]]></value>
+			<value lang="bg"><![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+				<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+					<span class="tooltip-row">
+					<label>Производител</label>
+						<span data-property="producerName">${get([producerName])}</span>
+					</span>					
+					<span class="tooltip-row">
+					<label>Модел</label>
+						<span data-property="model">${get([model])}</span>
+					</span>
+					<span class="tooltip-row">
+					<label>Инв. Номер</label>
+						<span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+					</span>
+					<span class="tooltip-row">
+					<label>Прод. Номер</label>
+						<span data-property="productNumber">${get([productNumber])}</span>
+					</span>
+					<span class="tooltip-row">
+					<label>Структура</label>
+						${objectProperty(${get([hasProprietor])})}
+					</span>
+					<span class="tooltip-row">
+					<label>Помещение</label>
+						${objectProperty(${get([assetInPremises])})}
+					</span>
+				</span>
+			)})}]]></value>
+		</label>
+		<label id="HARDWARE_DEFAULT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="producerName">${get([producerName])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;(
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">(${CL([status])})</span>)			
+							
+						).else(
+							<span data-property="producerName">${get([producerName])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;(
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">(${CL([status])})</span>)										
+						)}
+					</a>
+				</span>
+				<br /> IN: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="producerName">${get([producerName])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">(${CL([status])})</span>
+							
+						).else(
+							<span data-property="producerName">${get([producerName])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="type" style="color:#808080 !important">${CL([type])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+						)}
+					</a>
+				</span>
+				<br /> ИН: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+		</label>
+		<label id="HARDWARE_COMPACT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+					).else(
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+					)}
+				</a>
+			</span>
+			)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Ревизия: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+					).else(
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+							
+					)}
+				</a>
+			</span>
+			)}]]></value>
+		</label>
+		<label id="HARDWARE_BREADCRUMB_HEADER">
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+					<span data-property="model">${get([model])}</span>
+				</a>
+			</span>)}]]></value>
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+					<span data-property="model">${get([model])}</span>
+				</a>
+			</span>)}]]></value>
+		</label>
+	</labels>
+</definition>

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!-- Network device -->
+<definition id="networkDevice" parentId="hardware" isAbstract="false" type="object"> 
+	<fields>	
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Network device specific properties -->
+		<field name="type" type="an..180"><value>NETWORK_DEVICE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#NetworkDevice</value></field>
+		
+		<field name="networkDeviceType" type="an..50" label="networkDeviceType.label" displayType="editable" previewEmpty="true" codelist="CL126" uri="inv:networkDeviceType" />
+		<field name="wanInternet" type="an..50" codelist="137" label="wanInternet.label" displayType="editable" previewEmpty="true" uri="inv:wanInternet" />
+		<field name="firewall" type="an..2000" label="firewall.label" displayType="editable" previewEmpty="true" uri="inv:firewall" />
+		<field name="wifiHotSpot" type="an..2000" label="wifiHotSpot.label" displayType="editable" previewEmpty="true" uri="inv:wifiHotSpot" />
+		<field name="ipTelephony" type="an..2000" label="ipTelephony.label" displayType="editable" previewEmpty="true" uri="inv:ipTelephony" />
+		<field name="cableSystems" type="an..50" label="cabelSystem.label" displayType="editable" previewEmpty="true" uri="inv:cabelSystems" />
+		<field name="numberOfPortsInstalled" type="an..2000" label="numberOfPortsInstalled.label" displayType="editable" previewEmpty="true" uri="inv:numberOfPortsInstalled" />
+		<field name="numberOfFreePorts" type="an..2000" label="numberOfFreePorts.label" displayType="editable" previewEmpty="true" uri="inv:numberOfFreePorts" />
+		<field name="numberOfActivePorts" type="an..2000" label="numberOfActivePorts.label" displayType="editable" previewEmpty="true" uri="inv:numberOfActivePorts" />
+		<field name="networkBandwidth" type="an..100" label="networkBandwidth.label" displayType="editable" previewEmpty="true" uri="inv:networkBandwidth" />
+		<field name="telephoneExchangeType" type="an..50" label="telephoneExchangeType.label" displayType="editable" previewEmpty="true" codelist="CL129" uri="inv:telephoneExchangeType" />
+		<field name="telephoneType" type="an..50" label="telephoneType.label" displayType="editable" codelist="CL130" previewEmpty="true" uri="inv:telephoneType" />
+		
+		<field name="networkDevice" type="uri" label="networkDevice.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:networkDevice">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:NetworkDevice</control-param>
+			</control>
+		</field>
+		
+		<field name="vpnServer" type="an..2000" label="vpnServer.label" displayType="editable" previewEmpty="true" uri="inv:vpnServer"/>
+		<field name="networkDeviceDescription" type="an..2000" label="networkDeviceDescription.label" displayType="editable" previewEmpty="true" uri="inv:networkDeviceDescription"/>
+
+	</fields>
+</definition>

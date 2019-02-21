@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!-- Computer -->
+<definition id="computer" parentId="hardware" isAbstract="true" type="object"> 
+	<fields>	
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Computer specific properties -->
+		<field name="type" type="an..180"><value>COMPUTER</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Computer</value></field>
+		<field name="computerType" type="an..50" label="computerType.label" codelist="CL119" mandatory="true" displayType="editable" previewEmpty="true" uri="inv:computerType" />
+		<field name="cpu" type="an..2000" label="cpu.label" mandatory="true" displayType="editable" previewEmpty="true" uri="inv:cpu" />
+		<field name="cpuClockSpeed" type="n..10" label="cpuClockSpeed.label" displayType="editable" previewEmpty="true" uri="inv:cpuClockSpeed" />
+		<field name="cpuNumberOfCores" type="n..10" label="cpuNumberOfCores.label" displayType="editable" previewEmpty="true" uri="inv:cpuNumberOfCores" />
+		<field name="cpuNumberOfThreads" type="n..10" label="cpuNumberOfThreads.label" displayType="editable" previewEmpty="true" uri="inv:cpuNumberofThreads" />
+		<field name="ram" type="n..10" label="ram.label" displayType="editable" previewEmpty="true" uri="inv:ram" />
+		<field name="gpu" type="an..2000" label="gpu.label" displayType="editable" previewEmpty="true" uri="inv:gpu" />		
+		<field name="hasInstalledOperatingSystem" type="an..2000" label="hasInstalledOperatingSystem.label" displayType="editable" uri="inv:hasInstalledOperatingSystem" />
+		<field name="hasPeripheralDescription" type="an..2000" label="hasPeripheralDescription.label" displayType="editable" previewEmpty="true" uri="inv:hasPeripheralDescription" />
+		<field name="usesStorageArrayDescription" type="an..2000" order="432" label="usesStorageArrayDescription.label" displayType="editable" previewEmpty="true" uri="inv:usesStorageArrayDescription" />
+		<field name="usesStorageDeviceDescription" order="434" type="an..2000" label="usesStorageDeviceDescription.label" displayType="editable" previewEmpty="true" uri="inv:usesStorageDeviceDescription" />
+		<field name="usesStorageArray" type="uri" order="431" label="usesStorageArray.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:usesStorageArray" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageArray</control-param>
+			</control>
+		</field>
+		<field name="usesStorageDevice" type="uri" order="433" label="usesStorageDevice.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:usesStorageDevice" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageDevice</control-param>
+			</control>
+		</field>		
+	</fields>
+</definition>

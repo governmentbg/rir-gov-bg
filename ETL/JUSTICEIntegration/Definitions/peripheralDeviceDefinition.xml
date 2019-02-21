@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<!-- Peripheral device -->
+<definition id="peripheralDevice" parentId="hardware" isAbstract="false" type="object"> 
+	<fields>	
+		<field name="default_header" type="ANY" label="PERIPHERAL_DEFAULT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="compact_header" type="an..4096" label="PERIPHERAL_COMPACT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="breadcrumb_header" type="an..4096" label="PERIPHERAL_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+
+		
+		<!-- Peripheral device specific properties -->
+		<field name="type" type="an..180"><value>PERIPHERAL_DEVICE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#PeripheralDevice</value></field>
+		
+		<field name="peripheralType" type="an..50" label="peripheralType.label" codelist="CL109" mandatory="true" displayType="editable" uri="inv:peripheralType" />
+		<field name="otherParameters" type="an..2000" label="otherParameters.label" displayType="editable" uri="inv:otherParameters" />
+		<field name="isConnectedToDescription" type="an..2000" label="isConnectedToDescription.label" displayType="editable" previewEmpty="true" uri="inv:isConnectedToDescription" />
+		<field name="isConnectedTo" type="uri" label="isConnectedTo.label" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:isConnectedTo" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Hardware</control-param>
+			</control>
+		</field>
+	</fields>
+	<regions>
+		<region id="monitorDetails" order="10" displayType="editable" label="monitorDetails.label">
+			<condition id="hideMonitorDetails" renderAs="HIDDEN">[peripheralType] NOTIN ('PDEV04')</condition>
+			<fields>
+				<field name="monitorScreenResolution" type="an..2000" label="monitorScreenResolution.label" displayType="editable" uri="inv:monitorScreenResolution" />
+				<field name="monitorSize" type="an..2000" label="monitorSize.label" displayType="editable" uri="inv:monitorSize" />
+			</fields>
+		</region>
+	</regions>
+	
+	<labels>
+		<label id="PERIPHERAL_DEFAULT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="isProducedBy">${get([isProducedBy])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;(
+							<span data-property="peripheralType" style="color:#808080 !important">(${CL([peripheralType])})</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">(${CL([status])})</span>)			
+							
+						).else(
+							<span data-property="isProducedBy">${get([isProducedBy])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;(
+							<span data-property="peripheralType" style="color:#808080 !important">(${CL([peripheralType])})</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">(${CL([status])})</span>)										
+						)}
+					</a>
+				</span>
+				<br /> IN: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="isProducedBy">${get([isProducedBy])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+							
+						).else(
+							<span data-property="isProducedBy">${get([isProducedBy])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+						)}
+					</a>
+				</span>
+				<br /> ИН: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+		</label>
+		<label id="PERIPHERAL_COMPACT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					).else(
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					)}
+				</a>
+			</span>
+			)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Ревизия: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					).else(
+							<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="model">${get([model])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="peripheralType" style="color:#808080 !important">${CL([peripheralType])}</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					)}
+				</a>
+			</span>
+			)}]]></value>
+		</label>
+		<label id="PERIPHERAL_BREADCRUMB_HEADER">
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+					<span data-property="model">${get([model])}</span>
+				</a>
+			</span>)}]]></value>
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+					<span data-property="model">${get([model])}</span>
+				</a>
+			</span>)}]]></value>
+		</label>
+	</labels>
+	
+	
+</definition>

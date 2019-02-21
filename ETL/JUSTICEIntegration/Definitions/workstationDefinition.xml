@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<!-- Workstation -->
+<definition id="workstation" parentId="computer" isAbstract="false" type="object">
+	<fields>
+		<field name="type" type="an..180"><value>WORKSTATION</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Workstation</value></field>
+	</fields>
+</definition>

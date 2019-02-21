@@ -1,0 +1,319 @@
+<?xml version="1.0"?>
+<definition id="person" type="object" isAbstract="false" parentId="justiceBgObject" >
+	<fields>
+		<!-- INSERT HEADERS HERE -->
+		<field name="default_header" type="ANY" label="PERSON_DEFAULT_HEADER" displayType="system" dmsType="FORBIDDEN"/>
+		<field name="compact_header" type="an..4096" label="PERSON_COMPACT_HEADER" displayType="system" dmsType="FORBIDDEN"/>
+		<field name="breadcrumb_header" type="an..4096" label="PERSON_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+
+		<!-- Person specific properties -->
+		<field name="type" type="an..50" order="40" label="GEO10001.type" mandatory="false" codelist="CL7" displayType="system" dmsType="emf:type" uri="emf:type" >
+			<value>PERSON</value>
+		</field>
+		<field name="rdf:type" type="uri" displayType="system" uri="rdf:type" dmsType="FORBIDDEN">
+			<value>http://www.ontotext.com/proton/protontop#Person</value>
+		</field>
+		<field name="status" type="an..50" order="140" codelist="CL138" displayType="editable" />
+		<field name="title" type="an..100" previewEmpty="false" displayType="hidden" mandatory="false">
+			<value>${get([personFullName])}</value>
+		</field>
+		
+		<field name="personFullName" type="an..2000" label="personFullName.label" order="1" mandatory="true" displayType="editable" uri="inv:personFullName" />
+		<field name="phoneNumber" type="an..100" label="phoneNumber.label" order="2" mandatory="true" displayType="editable" previewEmpty="false" uri="emf:phoneNumber"/>
+		<field name="mobile" type="an..100" label="mobile.label" displayType="editable" order="5" previewEmpty="false" uri="emf:mobilePhoneNumber"/>
+		<field name="jobTitle" type="an..100" label="jobTitle.label" displayType="editable" order="6" previewEmpty="false" uri="emf:jobTitle" />
+		<field name="email" type="an..100" label="email.label" mandatory="true" order="7" displayType="editable" previewEmpty="false" uri="emf:email"/>
+		<field name="im" type="an..100" label="im.label" displayType="editable" order="8" previewEmpty="false" uri="emf:instantMessengerId"/>
+		<field name="address" type="an..2000" label="address.label" displayType="editable" order="10" uri="emf:address"/>
+		<field name="city" type="an..100" label="city.label" displayType="editable" order="11" previewEmpty="true" uri="inv:city" />
+		<field name="country" type="an..50" codelist="CL237" label="country.label" order="12" displayType="editable" previewEmpty="false" uri="emf:territory"/>
+		<field name="isContactPersonOf" type="uri" label="isContactPersonOf.label" order="13" displayType="editable" previewEmpty="true" multiValued="true" uri="emf:isContactPersonOf">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Organization</control-param>
+			</control> 
+		</field>
+	</fields>
+	<transitions>
+ 		<!-- set default value for title -->
+		<transition id="create" >
+			<fields>
+				<field name="setTitle" type="an..200" displayType="system" mandatory="false">
+					<value>
+						<![CDATA[
+							// set default values.
+							var title = root.get("personFullName");
+							root.add('title', title.toString());						
+							root.save('test');
+						]]>
+					</value>
+					<control id="SCRIPT">
+						<control-param id="phase" name="phase">after</control-param>
+						<control-param id="async" name="async">true</control-param>
+						<control-param id="persistent" name="persistent">true</control-param>
+					</control>
+				</field>				
+			</fields>		
+		</transition>
+		<!-- set default value for title -->
+		<transition id="editDetails" >
+			<fields>
+				<field name="setTitle" type="an..200" displayType="system" mandatory="false">
+					<value>
+						<![CDATA[
+							// set default values.
+							var title = root.get("personFullName");
+							root.add('title', title.toString());						
+							root.save('test');
+						]]>
+					</value>
+					<control id="SCRIPT">
+						<control-param id="phase" name="phase">after</control-param>
+						<control-param id="async" name="async">true</control-param>
+						<control-param id="persistent" name="persistent">true</control-param>
+					</control>
+				</field>				
+			</fields>		
+		</transition>	
+		<transition id="activate" label="activate.action.label" order="150" eventId="activate" purpose="transition" tooltip="activate.tooltip" />
+		<transition id="deactivate" label="deactivate.action.label" order="160" eventId="deactivate" purpose="transition" tooltip="deactivate.tooltip"/>
+			
+	</transitions>	
+ 
+ 	<stateTransitions>		
+			<stateTransition from="INIT" transition="create" to="ACTIVE" />
+			<stateTransition from="INIT" transition="clone" to="ACTIVE" />
+			
+			<stateTransition from="ACTIVE" transition="editDetails" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="addThumbnail" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="confirmRead" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="download" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="exportPDF" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="managePermissions" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="move" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="print" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="restorePermissions" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="saveAsTemplate" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="unlock" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="addWatchers" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="addAttachment" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="linkReferences" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="associatedWith" to="ACTIVE" />				
+			<stateTransition from="ACTIVE" transition="deactivate" to="INACTIVE" />
+	        <stateTransition from="ACTIVE" transition="printTab" to="ACTIVE" />
+            <stateTransition from="ACTIVE" transition="exportTabPDF" to="ACTIVE" />
+ 			<stateTransition from="ACTIVE" transition="exportWord" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="exportTabWord" to="ACTIVE" />
+			<stateTransition from="ACTIVE" transition="delete" to="DELETED" />
+			<stateTransition from="ACTIVE" transition="clone" to="ACTIVE" />
+			<!--From SEP 2.5 -->
+			<stateTransition from="ACTIVE" transition="createInContext" to="ACTIVE"/>
+            		
+			<stateTransition from="INACTIVE" transition="addThumbnail" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="confirmRead" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="download" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="exportPDF" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="managePermissions" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="move" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="print" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="restorePermissions" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="saveAsTemplate" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="unlock" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="addWatchers" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="addAttachment" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="linkReferences" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="associatedWith" to="INACTIVE" />				
+			<stateTransition from="INACTIVE" transition="activate" to="ACTIVE" />
+            <stateTransition from="INACTIVE" transition="printTab" to="INACTIVE" />
+            <stateTransition from="INACTIVE" transition="exportTabPDF" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="exportWord" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="exportTabWord" to="INACTIVE" />
+			<stateTransition from="INACTIVE" transition="delete" to="DELETED" />
+			<stateTransition from="INACTIVE" transition="clone" to="INACTIVE" />
+                        	
+    </stateTransitions>
+	<labels>
+		<label id="PERSON_DEFAULT_HEADER">
+			<value lang="en">
+				<![CDATA[${eval(
+                ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+                ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+                ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                ${var.isEmpty=${if((${get([jobTitle])}).matches(null)).then(true).else(false)}}
+                <span><img src="${thumbnailUri(64)}"/></span>
+                <span>
+                    <span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+                        <a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+							${if(${get([emf:isDeleted])} == true).then(<span>(Deleted) </span>)}
+                            ${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+                               <span data-property="personFullName">${get([personFullName])}</span> 
+                                <span style="color:#808080">&nbsp;(</span>
+                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+                                ${if(${var.isEmpty}).then().else(
+                               		<span style="color:#808080">,&nbsp;</span>
+                                	<span style="color:#808080" data-property="jobTitle">${get([jobTitle])}</span>
+                                )}
+                                <span style="color:#808080">)</span>
+                                	
+                            ).else(
+                                <span data-property="personFullName">${get([personFullName])}</span> 
+                                <span style="color:#808080">&nbsp;(</span>
+                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+                                ${if(${var.isEmpty}).then().else(
+                                	<span style="color:#808080">,&nbsp;</span>
+                                	<span style="color:#808080" data-property="jobTitle">${get([jobTitle])}</span>
+                                )}
+                                <span style="color:#808080">)</span>
+                                
+                            )}
+                        </a>
+                    </span>
+					<br/>email: <span data-property="email">${get([email])}</span>
+					<br/>phone: <span data-property="phoneNumber">${get([phoneNumber])}</span>
+					${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+                </span>)}]]>
+			</value>
+			<value lang="bg">
+				<![CDATA[${eval(
+                ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+                ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+                ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                ${var.isEmpty=${if((${get([jobTitle])}).matches(null)).then(true).else(false)}}
+                <span><img src="${thumbnailUri(64)}"/></span>
+                <span>
+                    <span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+                        <a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+							${if(${get([emf:isDeleted])} == true).then(<span>(Изтрит) </span>)}
+                            ${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+                               <span data-property="personFullName">${get([personFullName])}</span> 
+                                <span style="color:#808080">&nbsp;(</span>
+                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+                                ${if(${var.isEmpty}).then().else(
+                                	<span style="color:#808080">,&nbsp;</span>
+                                	<span style="color:#808080" data-property="jobTitle">${get([jobTitle])}</span>
+                                )}
+                                <span style="color:#808080">)</span>
+                                	
+                            ).else(
+                                <span data-property="personFullName">${get([personFullName])}</span> 
+                                <span style="color:#808080">&nbsp;(</span>
+                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+                                ${if(${var.isEmpty}).then().else(
+                               		<span style="color:#808080">,&nbsp;</span>
+                                	<span style="color:#808080" data-property="jobTitle">${get([jobTitle])}</span>
+                                )}
+                                <span style="color:#808080">)</span>
+                                
+                            )}
+                        </a>
+                    </span>
+					<br />email: <span data-property="email">${get([email])}</span> 
+					<br />phone: <span data-property="phoneNumber">${get([phoneNumber])}</span>
+					${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+                </span>)}]]>
+			</value>
+		</label>
+		<label id="PERSON_COMPACT_HEADER">
+			<value lang="en">
+				<![CDATA[${eval(
+                ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+                ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+                ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                ${var.isEmpty=${if((${get([jobTitle])}).matches(null)).then(true).else(false)}}
+                <span><img src="${thumbnailUri(16)}"/></span>
+                <span>
+					${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+					<span>
+						<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+							<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+								${if(${get([emf:isDeleted])} == true).then(<span>(Deleted) </span>)}
+								${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+									<span data-property="personFullName">${get([personFullName])}</span> 
+	                                <span style="color:#808080">&nbsp;(</span>
+	                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+	                                ${if(${var.isEmpty}).then().else(
+	                                	<span style="color:#808080" data-property="jobTitle">,&nbsp;${get([jobTitle])}</span>
+	                                )}
+	                                <span style="color:#808080">)</span>
+								).else(
+									<span data-property="personFullName">${get([personFullName])}</span> 
+	                                <span style="color:#808080">&nbsp;(</span>
+	                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+	                                ${if(${var.isEmpty}).then().else(
+	                                	<span style="color:#808080" data-property="jobTitle">,&nbsp;${get([jobTitle])}</span>
+	                                )}
+	                                <span style="color:#808080">)</span>
+								)}
+							</a>
+						</span>
+					</span>
+				</span>)}]]>
+			</value>
+			<value lang="bg">
+				<![CDATA[${eval(
+                ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+                ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+                ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                 ${var.isEmpty=${if((${get([jobTitle])}).matches(null)).then(true).else(false)}}
+                <span><img src="${thumbnailUri(16)}"/></span>
+                <span>
+					${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+					<span>
+						<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+							<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+								${if(${get([emf:isDeleted])} == true).then(<span>(Изтрит) </span>)}
+								${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+									Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+									<span data-property="personFullName">${get([personFullName])}</span> 
+	                                <span style="color:#808080">&nbsp;(</span>
+	                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+	                                ${if(${var.isEmpty}).then().else(
+	                                	<span style="color:#808080" data-property="jobTitle">,&nbsp;${get([jobTitle])}</span>
+	                                )}
+	                                <span style="color:#808080">)</span>
+								).else(
+									<span data-property="personFullName">${get([personFullName])}</span> 
+	                                <span style="color:#808080">&nbsp;(</span>
+	                               	<span style="color:#808080" data-property="type">${CL([type])}</span>
+	                                ${if(${var.isEmpty}).then().else(
+	                                	<span style="color:#808080" data-property="jobTitle">,&nbsp;${get([jobTitle])}</span>
+	                                )}
+	                                <span style="color:#808080">)</span>
+								)}
+							</a>
+						</span>
+					</span>
+				</span>)}]]>
+			</value>
+		</label>	
+		<label id="PERSON_BREADCRUMB_HEADER">
+			<value lang="bg">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="personFullName">${get([personFullName])}</span> 
+				</a>
+			</span>)}]]>
+			</value>
+			<value lang="en">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="personFullName">${get([personFullName])}</span> 
+				</a>
+			</span>)}]]>
+			</value>
+		</label>							
+	</labels>
+</definition>

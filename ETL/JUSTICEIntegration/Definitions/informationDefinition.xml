@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+<!-- Information -->
+<definition id="information" parentId="asset" isAbstract="false" type="object"> 
+	<fields>
+		<field name="default_header" type="ANY" label="INF_DEFAULT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="compact_header" type="an..4096" label="INF_COMPACT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="breadcrumb_header" type="an..4096" label="INF_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="tooltip_header" type="an..4096" label="INF_TOOLTIP_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		
+		<!-- Information specific properties -->
+		<field name="type" type="an..180"><value>INFORMATION</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Information</value></field>
+		
+		<field name="informationType" type="an..2000" label="informationType.label" order="102" displayType="editable" previewEmpty="true" uri="inv:informationType" />
+		<field name="size" type="n..12,2" label="size.label" displayType="editable" order="103"  previewEmpty="true" uri="emf:size" />
+		<field name="dataDescription" type="an..2000" label="dataDescription.label" order="104" displayType="editable" uri="inv:dataDescription" />
+		<field name="legalGround" type="an..2000" label="legalGround.label" order="105" displayType="editable" previewEmpty="true" uri="inv:legalGround" />
+		<field name="metadata" type="an..2000" label="metadata.label" order="251" displayType="editable"  previewEmpty="true" uri="inv:metadata"/>
+		<field name="dataFormat" type="an..2000" label="dataFormat.label" order="251" displayType="editable" previewEmpty="true" uri="inv:dataFormat" />
+		<field name="dataStructure" type="an..50" label="dataStructure.label" order="251" displayType="editable" previewEmpty="true" codelist="CL110" uri="inv:dataStructure" />
+		<field name="dataLocation" type="an..2000" label="dataLocation.label" order="251" displayType="editable" previewEmpty="true" uri="inv:dataLocation"/>
+		<field name="access" type="an..50" label="access.label" codelist="CL111" order="251" displayType="editable" previewEmpty="true" uri="inv:access" />
+		<field name="dataUpdate" type="an..50" label="dataUpdate.label" codelist="CL112" order="251" displayType="editable" previewEmpty="true" uri="inv:dataUpdate" />
+		<field name="periodOfUpdate" type="an..50" label="periodOfUpdate.label" codelist="CL113" order="251" displayType="editable" previewEmpty="true" uri="inv:periodOfUpdate" />
+		<field name="personalDetails" type="an..50" label="personalDetails.label" codelist="CL114" order="251"  displayType="editable" previewEmpty="true" uri="inv:personalDetails" />
+		<field name="personalDataType" type="an..2000" label="personalDataType.label" order="251" displayType="editable" uri="inv:personalDataType">
+			<condition id="hidePersonalDataType" renderAs="HIDDEN">[personalDetails] IN ('CPD02')</condition>
+		</field>
+		<field name="autoDataExchange" type="an..2000" label="autoDataExchange.label" order="251" displayType="editable" previewEmpty="true" uri="inv:autoDataExchange" />
+		<field name="organizationsWithAccess" type="n..4" label="organizationsWithAccess.label" order="105" displayType="editable" previewEmpty="true" uri="inv:organizationsWithAccess" />
+		<field name="storedOn" type="uri" label="storedOn.label" order="431" displayType="editable" previewEmpty="true" uri="inv:storedOn">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageArray,inv:StorageDevice</control-param>
+			</control>
+		</field>
+		<field name="managedBy" type="uri" label="managedBy.label" order="432" displayType="editable" previewEmpty="true" uri="inv:managedBy">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Software</control-param>
+			</control>
+		</field>
+		<field name="managedByDescription" type="an..2000" label="managedByDescription.label" order="433" displayType="editable" uri="inv:managedByDescription"/>
+		
+		<!-- assetInPremises not mandatory for Information -->
+		<field name="assetInPremises" type="uri"  mandatory="false" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Premises</control-param>
+			</control>
+		</field>
+		
+		
+	</fields>	
+
+	<labels>
+		<label id="INF_TOOLTIP_HEADER">
+			<value lang="en"><![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+					<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+				    <span class="tooltip-row">					
+					<label>Information Type</label>
+						<span data-property="informationType">${get([informationType])}</span>
+					</span>				
+					<span class="tooltip-row">
+					<label>Inventory Number </label>
+						<span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+					</span>
+				</span>
+			)})}]]></value>
+			<value lang="bg"><![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+				<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+					<span class="tooltip-row">
+					<label>Тип Информациионен Масив</label>
+						<span data-property="informationType">${get([informationType])}</span>
+					</span>					
+					<span class="tooltip-row">
+					<label>Инвентарен Номер </label>
+						<span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+					</span>
+				</span>
+			)})}]]></value>
+		</label>
+		<label id="INF_DEFAULT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							${if(${get([type])} <> null).then(<span data-property="type" style="color:#808080 !important">${CL([type])}</span>, )}
+								<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					).else(
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							${if(${get([type])} <> null).then(<span data-property="type" style="color:#808080 !important">${CL([type])}</span>, )}
+								<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>						
+						)}
+					</a>
+				</span>
+				<br /> IN: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							${if(${get([type])} <> null).then(<span data-property="type" style="color:#808080 !important">${CL([type])}</span>, )}
+								<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+					).else(
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							${if(${get([type])} <> null).then(<span data-property="type" style="color:#808080 !important">${CL([type])}</span>, )}
+								<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+						)}
+					</a>
+				</span>
+				<br /> ИН: <span data-property="inventoryNumber">${get([inventoryNumber])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]></value>
+		</label>
+		<label id="INF_COMPACT_HEADER">
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+					        <span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${get([type])})</span>
+					).else(
+					        <span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span data-property="type" style="color:#808080 !important">(${get([type])})</span>
+					)}
+				</a>
+			</span>
+			)}]]></value>
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Ревизия: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+					        <span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span data-property="informationType" style="color:#808080 !important">(${get([informationType])})</span>
+					).else(
+					        <span data-property="inventoryNumber">${get([inventoryNumber])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span data-property="informationType" style="color:#808080 !important">(${get([informationType])})</span>
+					)}
+				</a>
+			</span>
+			)}]]></value>
+		</label>
+		<label id="INF_BREADCRUMB_HEADER">
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="title">${get([title])} </span>
+					<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+				</a>
+			</span>)}]]></value>
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="title">${get([title])}, </span>
+					<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+				</a>
+			</span>)}]]></value>
+		</label>
+	</labels>
+</definition>

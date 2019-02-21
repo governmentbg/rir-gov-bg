@@ -1,0 +1,317 @@
+<?xml version="1.0" ?>
+<!-- Government structure -->
+<definition id="governmentStructure" parentId="organization" isAbstract="false" type="object"> 
+	<fields>
+		<!-- INSERT HEADERS HERE -->
+		<field name="default_header" type="ANY" label="GS_DEFAULT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="compact_header" type="an..4096" label="GS_COMPACT_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="breadcrumb_header" type="an..4096" label="GS_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		<field name="tooltip_header" type="an..4096" label="GS_TOOLTIP_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+
+		<!-- Government structure specific properties -->
+		<field name="type" type="an..180">
+			<value>GOVERNMENT_STRUCTURE</value>
+		</field>
+		<field name="rdf:type" type="uri">
+			<value>http://ittruse.ittbg.com/ontology/inventar#GovernmentStructure</value>
+		</field>
+	
+		<!--<field name="isProprietorOf" type="uri" label="isProprietorOf.label" order="201" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:isProprietorOf">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Asset</control-param>
+			</control>
+		</field> -->
+		<field name="govStructureInBuilding" type="uri" label="govStructureInBuilding.label" order="202" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:govStructureInBuilding">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Building</control-param>
+			</control>
+		</field>
+		<field name="govStructureInPremises" type="uri" label="govStructureInPremises.label" order="203" displayType="editable" previewEmpty="true" uri="inv:govStructureInPremises">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Premises</control-param>
+			</control>
+		</field>
+		<field name="govStructureManagesBuilding" type="uri" label="govStructureManagesBuilding.label" order="204" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:govStructureManagesBuilding">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Building</control-param>
+			</control>
+		</field>
+		<field name="govStructureManagesPremises" type="uri" label="govStructureManagesPremises.label" order="205" displayType="editable" multiValued="true" previewEmpty="true"  uri="inv:govStructureManagesPremises">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Premises</control-param>
+			</control>
+		</field>
+		<field name="administrationType" type="an..50" label="administrationType.label" order="102" codelist="CL121" mandatory="true" displayType="editable" previewEmpty="true" uri="inv:administrationType" />
+		<field name="administrationSubType" type="an..50" label="administrationSubType.label" order="103" codelist="CL122" displayType="editable" uri="inv:administrationSubType" >
+			<condition id="requiredFields" renderAs="REQUIRED">[administrationType] IN ('ADMT02', 'ADMT04')</condition>
+		</field>
+		<field name="status" type="an..50" codelist="CL135">
+			<value>ACTIVE</value>
+		</field>
+		<field name="hasEmployee" type="uri" label="hasEmployee.label" order="113" displayType="editable" multiValued="true" previewEmpty="true"  uri="emf:hasEmployee">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Employee</control-param>
+			</control>
+		</field>
+		
+
+		
+
+		
+			
+		
+		
+	</fields>
+
+	<stateTransitions>	
+		<stateTransition from="INIT" transition="create" to="ACTIVE" />
+		<stateTransition from="INIT" transition="clone" to="ACTIVE" />
+
+		<stateTransition from="ACTIVE" transition="editDetails" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="saveAsTemplate" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="move" to="ACTIVE"/>
+		<stateTransition from="ACTIVE" transition="lock" to="ACTIVE"/>
+		<stateTransition from="ACTIVE" transition="unlock" to="ACTIVE"/>
+		<stateTransition from="ACTIVE" transition="managePermissions" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="addThumbnail" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="print" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="printTab" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="exportTabPDF" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="exportPDF" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="exportWord" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="exportTabWord" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="addWatchers" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="clone" to="ACTIVE" />
+		<stateTransition from="ACTIVE" transition="createInContext" to="ACTIVE"/>
+		<stateTransition from="ACTIVE" transition="removeFromOperation" to="INACTIVE" />
+		<stateTransition from="ACTIVE" transition="delete" to="DELETED" />
+		<stateTransition from="ACTIVE" transition="revertVersion" to="ACTIVE"/>
+		
+		<stateTransition from="INACTIVE" transition="editDetails" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="saveAsTemplate" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="move" to="INACTIVE"/>
+		<stateTransition from="INACTIVE" transition="lock" to="INACTIVE"/>
+		<stateTransition from="INACTIVE" transition="unlock" to="INACTIVE"/>
+		<stateTransition from="INACTIVE" transition="managePermissions" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="addThumbnail" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="print" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="printTab" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="exportTabPDF" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="exportPDF" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="exportWord" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="exportTabWord" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="addWatchers" to="INACTIVE" />
+		<stateTransition from="INACTIVE" transition="createInContext" to="INACTIVE"/>
+		<stateTransition from="INACTIVE" transition="clone" to="INACTIVE" />	
+		<stateTransition from="INACTIVE" transition="releaseInOperation" to="ACTIVE" />
+		<stateTransition from="INACTIVE" transition="delete" to="DELETED" />
+		<stateTransition from="INACTIVE" transition="revertVersion" to="INACTIVE" />
+	</stateTransitions>
+	<labels>
+		<label id="GS_TOOLTIP_HEADER">
+			<value lang="en">
+				<![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+					<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+				    <span class="tooltip-row">					
+					<label>Administration Type</label>
+						<span data-property="administrationType">${CL([administrationType])}</span>
+					</span>				
+					<span class="tooltip-row">
+					<label>Address </label>
+						<span data-property="address">${get([address])}</span>
+					</span>
+					
+					<span class="tooltip-row">
+					<label>Phone Number</label>
+						<span data-property="phoneNumber">${get([phoneNumber])}</span>
+					</span>
+					<span class="tooltip-row">
+                        <label>Status: </label>
+                        <span data-property="status">${CL([status])}</span>
+                    </span>
+					
+				</span>
+			)})}]]>
+			</value>
+			<value lang="bg">
+				<![CDATA[${eval(#{eval(
+				<span class="thumbnail-content">
+				<img class="thumbnail" src="${thumbnailUri(64)}" />
+				</span>
+				<span class="tooltip-data">
+					<span class="tooltip-header">
+						<a href="${link(currentInstance)}" class="instance-link" data-status="${get([status])}" data-id="${id.db}" data-uid="${id.uid}">
+							(<span data-type="${get([type])}">${CL([type])}</span>) 
+							<span data-title="${get([title])}">${get([title])}</span>
+						</a>
+					</span>
+					<span class="tooltip-row">
+					<label>Тип структура</label>
+						<span data-property="administrationType">${CL([administrationType])}</span>
+					</span>					
+					<span class="tooltip-row">
+					<label>Адрес</label>
+						<span data-property="address">${get([address])}</span>
+					</span>
+					
+					<span class="tooltip-row">
+					<label>Телефон</label>
+						<span data-property="phoneNumber">${get([phoneNumber])}</span>
+					</span>
+					<span class="tooltip-row">
+                        <label>Статус: </label>
+                        <span data-property="status">${CL([status])}</span>
+                    </span>
+					
+				</span>
+			)})}]]>
+			</value>
+		</label>
+		<label id="GS_DEFAULT_HEADER">
+			<value lang="en">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+					        <span data-property="identifier">${get([identifier])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="informationType" style="color:#808080 !important">${get([informationType])}&nbsp;</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>)
+					).else(
+					        <span data-property="identifier">${get([identifier])}</span>&nbsp;
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="informationType" style="color:#808080 !important">${get([informationType])}&nbsp;</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>)								
+						)}
+					</a>
+				</span>
+				<br /> Address: <span data-property="address">${get([address])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]>
+			</value>
+			<value lang="bg">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(64)}"/></span>
+			<span>
+				<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+					<a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+						${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+							Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}&nbsp;</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>)
+					).else(
+							<span data-property="title">${get([title])}</span>&nbsp;
+							<span style="color:#808080 !important">(</span>
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}&nbsp;</span>,&nbsp;
+							<span data-property="status" style="color:#808080 !important">${CL([status])}</span>
+							<span style="color:#808080 !important">)</span>
+						)}
+					</a>
+				</span>
+				<br /> Адрес: <span data-property="address">${get([address])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+			</span>)}]]>
+			</value>
+		</label>
+		<label id="GS_COMPACT_HEADER">
+			<value lang="en">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Revision: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}</span>)
+					).else(
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}</span>)
+					)}
+				</a>
+			</span>
+			)}]]>
+			</value>
+			<value lang="bg">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+						Ревизия: <span data-property="revisionNumber">${get([emf:revisionNumber])}</span> 
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}</span>)
+					).else(
+							<span data-property="title">${get([title])}</span>&nbsp;(
+							<span data-property="administrationType" style="color:#808080 !important">${CL([administrationType])}</span>)
+					)}
+				</a>
+			</span>
+			)}]]>
+			</value>
+		</label>
+		<label id="GS_BREADCRUMB_HEADER">
+			<value lang="bg">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="title">${get([title])}</span>&nbsp;(
+					<span data-property="administrationType">${CL([administrationType])}</span>)
+				</a>
+			</span>)}]]>
+			</value>
+			<value lang="en">
+				<![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="title">${get([title])}</span>&nbsp;(
+					<span data-property="administrationType">${CL([administrationType])}</span>)			
+
+				</a>
+			</span>)}]]>
+			</value>
+		</label>
+	</labels>
+</definition>

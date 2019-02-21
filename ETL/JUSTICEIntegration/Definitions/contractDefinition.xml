@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<definition id="contract" type="object" isAbstract="false" parentId="justiceBgObject" >
+	<fields>
+		<!-- INSERT HEADERS HERE -->
+
+		<!-- Contract specific properties -->
+		<field name="type" type="an..50" order="40" label="GEO10001.type" mandatory="false" codelist="CL7" displayType="system" dmsType="emf:type" uri="emf:type" >
+			<value>CONTRACT</value>
+		</field>
+		<field name="rdf:type" type="uri" displayType="system" uri="rdf:type" dmsType="FORBIDDEN">
+			<value>http://ittruse.ittbg.com/ontology/inventar#Contract</value>
+		</field>
+		
+		<field name="status" type="an..50" codelist="CL136">
+			<value>CURRENT</value>
+		</field>
+		
+		<field name="contractEndDate" type="date" label="contractEndDate.label" displayType="editable" uri="inv:contractEndDate" />
+		<field name="contractType" type="an..50" label="contractType.label" displayType="editable" codelist="CL133" uri="inv:contractType" />
+		<field name="hasContractor" type="uri" label="hasContractor.label" displayType="editable"  multiValued="true" previewEmpty="true" uri="inv:hasContractor">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Organization</control-param>
+			</control>
+		</field>
+		<field name="hasContractorName" type="an..100" label="hasContractorName.label" displayType="editable" uri="inv:hasContractorName" />
+
+		<field name="isContractFor" type="uri" label="isContractFor.label" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:isContractFor">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:InformationalService</control-param>
+			</control> 
+		</field>
+
+		<field name="contractHasAsset" type="uri" label="contractHasAsset.label" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:contractHasAsset">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Asset</control-param>
+			</control> 
+		</field>
+
+		<field name="hasResponsibleUser" type="uri" label="hasResponsibleUser.label" displayType="editable"  previewEmpty="true" multiValued="true" uri="inv:hasResponsibleUser">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Employee</control-param>
+			</control>
+		</field>
+	</fields>
+	
+	
+	<stateTransitions>	
+		<stateTransition from="INIT" transition="create" to="CURRENT" />	
+		
+		<stateTransition from="CURRENT" transition="editDetails" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="saveAsTemplate" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="move" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="lock" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="unlock" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="managePermissions" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="addThumbnail" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="print" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="printTab" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportTabPDF" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportPDF" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportWord" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="exportTabWord" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="addWatchers" to="CURRENT" />
+		<stateTransition from="CURRENT" transition="createInContext" to="CURRENT"/>
+		<stateTransition from="CURRENT" transition="delete" to="DELETED" />
+		<stateTransition from="CURRENT" transition="revertVersion" to="CURRENT"/>
+		
+		<stateTransition from="OUTDATED" transition="editDetails" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="saveAsTemplate" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="move" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="lock" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="unlock" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="managePermissions" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="addThumbnail" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="print" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="printTab" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportTabPDF" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportPDF" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportWord" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="exportTabWord" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="addWatchers" to="OUTDATED" />
+		<stateTransition from="OUTDATED" transition="createInContext" to="OUTDATED"/>
+		<stateTransition from="OUTDATED" transition="delete" to="DELETED" />
+		<stateTransition from="OUTDATED" transition="revertVersion" to="OUTDATED"/>
+    </stateTransitions>
+	
+	
+	
+	
+</definition>

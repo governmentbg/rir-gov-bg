@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!-- Virtual machine -->
+<definition id="virtualMachine" parentId="software" isAbstract="false" type="object"> 
+	<fields>
+		<field name="type" type="an..180"><value>VIRTUAL_MACHINE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#VirtualMachine</value></field>
+		
+		<field name="cpu" type="an..2000" label="cpu.label" order="102" mandatory="true" displayType="editable" uri="inv:cpu" />
+		<field name="cpuClockSpeed" type="n..10" label="cpuClockSpeed.label" order="103" displayType="editable" uri="inv:cpuClockSpeed" />
+		<field name="ram" type="n..10" label="ram.label" order="104" displayType="editable" uri="inv:ram" />
+		<field name="hasInstalledSoftware" type="uri" label="hasInstalledSoftware.label" order="431" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:hasInstalledSoftware" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Software</control-param>
+			</control>
+		</field>
+		<field name="installedSoftwareName" type="an..2000" label="installedSoftwareName.label" order="432" displayType="editable" previewEmpty="true" uri="inv:installedSoftwareName" />
+		<field name="hasInstalledOperatingSystem" type="an..2000" label="hasInstalledOperatingSystem.label" order="433" displayType="editable" previewEmpty="true" uri="inv:hasInstalledOperatingSystem"/>
+		<field name="usesStorageArray" type="uri" label="usesStorageArray.label" order="434" displayType="editable" previewEmpty="true" uri="inv:usesStorageArray">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageArray</control-param>
+			</control>
+		</field>
+		<field name="usesStorageArrayDescription" type="an..2000" label="usesStorageArrayDescription.label" order="435" displayType="editable" previewEmpty="true" uri="inv:usesStorageArrayDescription"/>
+		<field name="usesStorageDevice" type="uri" label="usesStorageDevice.label" order="436" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:usesStorageDevice" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageDevice</control-param>
+			</control>
+		</field>
+		<field name="usesStorageDeviceDescription" type="an..2000" label="usesStorageDeviceDescription.label" order="437" displayType="editable" previewEmpty="true" uri="inv:usesStorageDeviceDescription"/>
+				
+		
+		
+	</fields>
+</definition>

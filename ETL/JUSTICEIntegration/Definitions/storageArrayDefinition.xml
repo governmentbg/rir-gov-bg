@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!-- Storage array -->
+<definition id="storageArray" parentId="hardware" isAbstract="false" type="object">
+	<fields>
+		<field name="type" type="an..180"><value>STORAGE_ARRAY</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#StorageArray</value></field>
+	
+		<field name="chassis" type="an..2000" label="chassis.label" displayType="editable" previewEmpty="true" uri="inv:chassis" />
+		<field name="raid" type="an..2000" label="raid.label" displayType="editable" previewEmpty="true" uri="inv:raid" />
+		<field name="numberOfPortsInstalled" type="an..2000" label="numberOfPortsInstalled.label" displayType="editable" previewEmpty="true" uri="inv:numberOfPortsInstalled" />
+		<field name="numberOfFreePorts" type="an..2000" label="numberOfFreePorts.label" displayType="editable" previewEmpty="true" uri="inv:numberOfFreePorts" />
+		<field name="numberOfSlots" type="an..2000" label="numberOfSlots.label" displayType="editable" previewEmpty="true" uri="inv:numberOfSlots" />
+		<field name="maximalCapacity" type="n..10" label="maximalCapacity.label" displayType="editable" previewEmpty="true" uri="inv:maximalCapacity" />
+		<field name="diskPools" type="an..2000" label="diskPools.label" displayType="editable" previewEmpty="true" uri="inv:diskPools" />
+		<field name="dataExchange" type="an..2000" label="dataExchange.label" displayType="editable" previewEmpty="true" uri="inv:dataExchange" />
+		<field name="alarms" type="an..2000" label="alarms.label" displayType="editable" previewEmpty="true" uri="inv:alarms" />
+		<field name="tapeDrivesAndLibraries" type="an..2000" label="tapeDrivesAndLibraries.label" displayType="editable" uri="inv:tapeDrivesAndLibraries" />
+		<field name="otherParameters" type="an..2000" label="otherParameters.label" displayType="editable" uri="inv:otherParameters" />
+		
+		<field name="isStoreFor" type="uri" label="isStoreFor.label" displayType="editable" multiValued="true" uri="inv:isStoreFor">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Software,inv:Information</control-param>
+			</control>
+		</field>
+		<field name="isStoreForDescription" type="an..2000" label="isStoreForDescription.label" displayType="editable" uri="inv:isStoreForDescription" />
+			
+		<field name="storageArrayUsedBy" type="uri" label="storageArrayUsedBy.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:storageArrayUsedBy">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:VirtualMachine,inv:Computer</control-param>
+			</control>
+		</field>
+		<field name="storageArrayUsedByDescription" type="an..2000" label="storageArrayUsedByDescription.label" displayType="editable" uri="inv:storageArrayUsedByDescription" />
+		
+		<field name="usesStorageDevice" type="uri" label="usesStorageDevice.label" displayType="editable" uri="inv:usesStorageDevice">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:StorageDevice</control-param>
+			</control>
+		</field>
+		<field name="usesStorageDeviceDescription" type="an..2000" label="usesStorageDeviceDescription.label" displayType="editable" uri="inv:usesStorageDeviceDescription" />
+		
+	</fields>
+</definition>

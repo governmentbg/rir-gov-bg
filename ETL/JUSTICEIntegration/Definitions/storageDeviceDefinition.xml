@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!-- Storage device -->
+<definition id="storageDevice" parentId="hardware" isAbstract="false" type="object"> 
+	<fields>	
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Storage device specific properties -->
+		<field name="type" type="an..180"><value>STORAGE_DEVICE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#StorageDevice</value></field>
+		
+		<field name="storageDeviceType" type="an..50" order="435" label="storageDeviceType.label" displayType="editable" previewEmpty="true" codelist="CL131" uri="inv:storageDeviceType" />
+		<field name="capacity" type="n..10" order="434"  label="capacity.label" displayType="editable" previewEmpty="true" uri="inv:capacity" />
+		<field name="storageDeviceUsedBy" type="uri" order="437" label="storageDeviceUsedBy.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:storageDeviceUsedBy">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:VirtualMachine,inv:Computer,inv:StorageArray</control-param>
+			</control>
+		</field>
+		<field name="storageDeviceUsedByDescription" type="an..2000" order="438" label="storageDeviceUsedByDescription.label" displayType="editable" previewEmpty="true" uri="inv:storageDeviceUsedByDescription" />
+		<field name="isStoreFor" type="uri" label="isStoreFor.label" order="439" displayType="editable" previewEmpty="true" uri="inv:isStoreFor">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Software,inv:Information</control-param>
+			</control>
+		</field>
+		<field name="isStoreForDescription" type="an..2000" order="440" label="isStoreForDescription.label" displayType="editable" previewEmpty="true" uri="inv:isStoreForDescription" />
+	</fields>
+</definition>

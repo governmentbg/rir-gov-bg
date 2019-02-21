@@ -1,0 +1,2603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>LnkAsset2</name>
+    <description />
+    <extended_description />
+    <trans_version />
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>/</directory>
+    <parameters>
+    </parameters>
+    <log>
+      <trans-log-table>
+        <connection>StagingDB</connection>
+        <schema />
+        <table>pentaho_log</table>
+        <size_limit_lines />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STATUS</id>
+          <enabled>Y</enabled>
+          <name>STATUS</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>N</enabled>
+          <name>LINES_READ</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>N</enabled>
+          <name>LINES_WRITTEN</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>N</enabled>
+          <name>LINES_UPDATED</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>N</enabled>
+          <name>LINES_INPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>N</enabled>
+          <name>LINES_OUTPUT</name>
+          <subject />
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>N</enabled>
+          <name>LINES_REJECTED</name>
+          <subject />
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>STARTDATE</id>
+          <enabled>Y</enabled>
+          <name>STARTDATE</name>
+        </field>
+        <field>
+          <id>ENDDATE</id>
+          <enabled>Y</enabled>
+          <name>ENDDATE</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>DEPDATE</id>
+          <enabled>Y</enabled>
+          <name>DEPDATE</name>
+        </field>
+        <field>
+          <id>REPLAYDATE</id>
+          <enabled>Y</enabled>
+          <name>REPLAYDATE</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>Y</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+        <field>
+          <id>EXECUTING_SERVER</id>
+          <enabled>Y</enabled>
+          <name>EXECUTING_SERVER</name>
+        </field>
+        <field>
+          <id>EXECUTING_USER</id>
+          <enabled>Y</enabled>
+          <name>EXECUTING_USER</name>
+        </field>
+        <field>
+          <id>CLIENT</id>
+          <enabled>N</enabled>
+          <name>CLIENT</name>
+        </field>
+      </trans-log-table>
+      <perf-log-table>
+        <connection />
+        <schema />
+        <table />
+        <interval />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>SEQ_NR</id>
+          <enabled>Y</enabled>
+          <name>SEQ_NR</name>
+        </field>
+        <field>
+          <id>LOGDATE</id>
+          <enabled>Y</enabled>
+          <name>LOGDATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>INPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>INPUT_BUFFER_ROWS</name>
+        </field>
+        <field>
+          <id>OUTPUT_BUFFER_ROWS</id>
+          <enabled>Y</enabled>
+          <name>OUTPUT_BUFFER_ROWS</name>
+        </field>
+      </perf-log-table>
+      <channel-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>LOGGING_OBJECT_TYPE</id>
+          <enabled>Y</enabled>
+          <name>LOGGING_OBJECT_TYPE</name>
+        </field>
+        <field>
+          <id>OBJECT_NAME</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_NAME</name>
+        </field>
+        <field>
+          <id>OBJECT_COPY</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_COPY</name>
+        </field>
+        <field>
+          <id>REPOSITORY_DIRECTORY</id>
+          <enabled>Y</enabled>
+          <name>REPOSITORY_DIRECTORY</name>
+        </field>
+        <field>
+          <id>FILENAME</id>
+          <enabled>Y</enabled>
+          <name>FILENAME</name>
+        </field>
+        <field>
+          <id>OBJECT_ID</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_ID</name>
+        </field>
+        <field>
+          <id>OBJECT_REVISION</id>
+          <enabled>Y</enabled>
+          <name>OBJECT_REVISION</name>
+        </field>
+        <field>
+          <id>PARENT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>PARENT_CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>ROOT_CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>ROOT_CHANNEL_ID</name>
+        </field>
+      </channel-log-table>
+      <step-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>TRANSNAME</id>
+          <enabled>Y</enabled>
+          <name>TRANSNAME</name>
+        </field>
+        <field>
+          <id>STEPNAME</id>
+          <enabled>Y</enabled>
+          <name>STEPNAME</name>
+        </field>
+        <field>
+          <id>STEP_COPY</id>
+          <enabled>Y</enabled>
+          <name>STEP_COPY</name>
+        </field>
+        <field>
+          <id>LINES_READ</id>
+          <enabled>Y</enabled>
+          <name>LINES_READ</name>
+        </field>
+        <field>
+          <id>LINES_WRITTEN</id>
+          <enabled>Y</enabled>
+          <name>LINES_WRITTEN</name>
+        </field>
+        <field>
+          <id>LINES_UPDATED</id>
+          <enabled>Y</enabled>
+          <name>LINES_UPDATED</name>
+        </field>
+        <field>
+          <id>LINES_INPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_INPUT</name>
+        </field>
+        <field>
+          <id>LINES_OUTPUT</id>
+          <enabled>Y</enabled>
+          <name>LINES_OUTPUT</name>
+        </field>
+        <field>
+          <id>LINES_REJECTED</id>
+          <enabled>Y</enabled>
+          <name>LINES_REJECTED</name>
+        </field>
+        <field>
+          <id>ERRORS</id>
+          <enabled>Y</enabled>
+          <name>ERRORS</name>
+        </field>
+        <field>
+          <id>LOG_FIELD</id>
+          <enabled>N</enabled>
+          <name>LOG_FIELD</name>
+        </field>
+      </step-log-table>
+      <metrics-log-table>
+        <connection />
+        <schema />
+        <table />
+        <timeout_days />
+        <field>
+          <id>ID_BATCH</id>
+          <enabled>Y</enabled>
+          <name>ID_BATCH</name>
+        </field>
+        <field>
+          <id>CHANNEL_ID</id>
+          <enabled>Y</enabled>
+          <name>CHANNEL_ID</name>
+        </field>
+        <field>
+          <id>LOG_DATE</id>
+          <enabled>Y</enabled>
+          <name>LOG_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_DATE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DATE</name>
+        </field>
+        <field>
+          <id>METRICS_CODE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_CODE</name>
+        </field>
+        <field>
+          <id>METRICS_DESCRIPTION</id>
+          <enabled>Y</enabled>
+          <name>METRICS_DESCRIPTION</name>
+        </field>
+        <field>
+          <id>METRICS_SUBJECT</id>
+          <enabled>Y</enabled>
+          <name>METRICS_SUBJECT</name>
+        </field>
+        <field>
+          <id>METRICS_TYPE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_TYPE</name>
+        </field>
+        <field>
+          <id>METRICS_VALUE</id>
+          <enabled>Y</enabled>
+          <name>METRICS_VALUE</name>
+        </field>
+      </metrics-log-table>
+    </log>
+    <maxdate>
+      <connection />
+      <table />
+      <field />
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file />
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+    <created_user>-</created_user>
+    <created_date>2018/10/02 11:17:34.452</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2018/10/02 11:17:34.452</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>iTopDB</name>
+    <server>${ITOP_HOST}</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${ITOP_NAME}</database>
+    <port>${ITOP_PORT}</port>
+    <username>${ITOP_USER}</username>
+    <password>${ITOP_PASS}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${ITOP_PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>StagingDB</name>
+    <server>${STAGING_HOST}</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>${STAGING_NAME}</database>
+    <port>${STAGING_PORT}</port>
+    <username>${STAGING_USER}</username>
+    <password>${STAGING_PASS}</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${STAGING_PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>STREAM_RESULTS</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <order>
+    <hop>
+      <from>GetJobName</from>
+      <to>Insert/UpdatelnkAssetToRoomsErrors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetJobName 2</from>
+      <to>Insert/UpdatelnkAssetToOrganizationEmployeesErrors </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetTransName&amp;Time</from>
+      <to>AssetId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkAssetToOrganizationEmployees</from>
+      <to>GetJobName 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkAssetToRooms</from>
+      <to>GetJobName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>JusticeAsset</from>
+      <to>GetTransName&amp;Time</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>EmployeeId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>RoomsId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RoomsId</from>
+      <to>Insert/UpdatelnkAssetToRooms</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EmployeeId</from>
+      <to>Type</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Type</from>
+      <to>Insert/UpdatelnkAssetToOrganizationEmployees</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EmployeeId 2</from>
+      <to>Type 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetJobName 2 2</from>
+      <to>Insert/UpdatelnkAssetToOrganizationEmployeesErrors  </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkAssetToOrganizationEmployees 2</from>
+      <to>GetJobName 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Type 2</from>
+      <to>Insert/UpdatelnkAssetToOrganizationEmployees 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>EmployeeId 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>EthernetInfrasctureOnly</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>MaintenanceSystemOnly</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>EthernetInfrasctureOnly</from>
+      <to>BuildingId </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>MaintenanceSystemOnly</from>
+      <to>BuildingId  2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetJobName 2 2 2</from>
+      <to>Insert/UpdatelnkBuildingToEthernetInfrastructureErrors  </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkBuildingToEthernetInfrastructure</from>
+      <to>GetJobName 2 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>BuildingId </from>
+      <to>Insert/UpdatelnkBuildingToEthernetInfrastructure</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetJobName 2 2 2 2</from>
+      <to>Insert/UpdatelnkBuildingToMaintenanceSystemsErrors </to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkBuildingToMaintenanceSystems</from>
+      <to>GetJobName 2 2 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CodeList</from>
+      <to>MaintenanceTypeLookUp</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>MaintenanceTypeLookUp</from>
+      <to>MaintenanceTypeId</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>BuildingId  2</from>
+      <to>MaintenanceTypeLookUp</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>MaintenanceTypeId</from>
+      <to>Insert/UpdatelnkBuildingToMaintenanceSystems</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GetJobName 3</from>
+      <to>Insert/UpdatelnkAssetToDocumentsErrors</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Insert/UpdatelnkAssetToDocuments</from>
+      <to>GetJobName 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>DocumentsId</from>
+      <to>Insert/UpdatelnkAssetToDocuments</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>AssetId</from>
+      <to>DocumentsId</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step>
+    <name>AssetId</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Asset</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>id</name>
+        <field>legacy_asset_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>assetId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BuildingId </name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Buildings</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>assetInBuilding</name>
+        <field>legacy_building_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>buildingId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>BuildingId  2</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Buildings</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>assetInBuilding</name>
+        <field>legacy_building_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>buildingId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CodeList</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield />
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield />
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field />
+    <accept_stepname />
+    <file>
+      <name>${JUSTICE_CODELIST_PATH}\codelists.xls</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>Code</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>descrEn</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>descrBg</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>codelists</name>
+        <startrow>0</startrow>
+        <startcol>1</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>Y</error_ignored>
+    <error_line_skipped>Y</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>JXL</spreadsheet_type>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>DocumentsId</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Documents</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>hasArchitecture</name>
+        <field>legacy_documents_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>documentsId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>EmployeeId</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Employee</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>usedByEmployee</name>
+        <field>legacy_employee_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>employeeId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>EmployeeId 2</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Employee</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>hasResponsibleUser</name>
+        <field>legacy_employee_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>employeeId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>EthernetInfrasctureOnly</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>BuildingId </send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>finalClass</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Ethernet_infrastructure</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName 2 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName 2 2 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName 2 2 2 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1232</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetJobName 3</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>JOB_NAME</name>
+        <variable>${Internal.Job.Name}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>GetTransName&amp;Time</name>
+    <type>SystemInfo</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>transName</name>
+        <type>transformation name</type>
+      </field>
+      <field>
+        <name>time</name>
+        <type>system date (variable)</type>
+      </field>
+      <field>
+        <name>trans_batch_id</name>
+        <type>job batch ID</type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToDocuments</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkAssetToDocuments</table>
+      <key>
+        <name>assetId</name>
+        <field>Asset_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>documentsId</name>
+        <field>Document_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Asset_id</name>
+        <rename>assetId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Document_id</name>
+        <rename>documentsId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToDocumentsErrors</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToOrganizationEmployees</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkAssetToOrganizationEmployees</table>
+      <key>
+        <name>assetId</name>
+        <field>Asset_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>employeeId</name>
+        <field>Organization_Employee_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>type</name>
+        <field>type</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Asset_id</name>
+        <rename>assetId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Organization_Employee_id</name>
+        <rename>employeeId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>type</name>
+        <rename>type</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToOrganizationEmployees 2</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkAssetToOrganizationEmployees</table>
+      <key>
+        <name>assetId</name>
+        <field>Asset_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>employeeId</name>
+        <field>Organization_Employee_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>type</name>
+        <field>type</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Asset_id</name>
+        <rename>assetId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Organization_Employee_id</name>
+        <rename>employeeId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>type</name>
+        <rename>type</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToOrganizationEmployeesErrors </name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToOrganizationEmployeesErrors  </name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToRooms</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkAssetToRooms</table>
+      <key>
+        <name>assetId</name>
+        <field>Asset_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>roomId</name>
+        <field>Rooms_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Asset_id</name>
+        <rename>assetId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Rooms_id</name>
+        <rename>roomId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkAssetToRoomsErrors</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkBuildingToEthernetInfrastructure</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkBuildingToEthernetInfrastructure</table>
+      <key>
+        <name>buildingId</name>
+        <field>Buildings_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>id</name>
+        <field>Ethernet_infrastructure_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Buildings_id</name>
+        <rename>buildingId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Ethernet_infrastructure_id</name>
+        <rename>id</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkBuildingToEthernetInfrastructureErrors  </name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1152</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkBuildingToMaintenanceSystems</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <commit>100</commit>
+    <update_bypassed>Y</update_bypassed>
+    <lookup>
+      <schema />
+      <table>lnkBuildingToMaintenanceSystems</table>
+      <key>
+        <name>buildingId</name>
+        <field>Buildings_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>id</name>
+        <field>Maintenance_System_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>Buildings_id</name>
+        <rename>buildingId</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>Maintenance_System_id</name>
+        <rename>id</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>created_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>updated_on</name>
+        <rename>time</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>maintenance_system_type</name>
+        <rename>maintenanceTypeId</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1024</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert/UpdatelnkBuildingToMaintenanceSystemsErrors </name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <schema />
+    <table>transformation_errors</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
+    <fields>
+      <field>
+        <column_name>trans_name</column_name>
+        <stream_name>transName</stream_name>
+      </field>
+      <field>
+        <column_name>log_date</column_name>
+        <stream_name>time</stream_name>
+      </field>
+      <field>
+        <column_name>error</column_name>
+        <stream_name>error</stream_name>
+      </field>
+      <field>
+        <column_name>error_field</column_name>
+        <stream_name>errorField</stream_name>
+      </field>
+      <field>
+        <column_name>job_name</column_name>
+        <stream_name>JOB_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>trans_batch_id</column_name>
+        <stream_name>trans_batch_id</stream_name>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1440</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>JusticeAsset</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>StagingDB</connection>
+    <sql>SELECT id,assetInPremises,assetInBuilding, usedByEmployee, hasResponsibleUser,null,'Information_array' as finalClass, hasArchitecture  FROM staging.justice_information
+UNION 
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Information_system' as finalClass, hasArchitecture  FROM staging.justice_informationSystem
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'SoftwareLicense' as finalClass, hasArchitecture  FROM staging.justice_systemSoftware
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'SoftwareLicense' as finalClass, hasArchitecture  FROM staging.justice_applicationSoftware
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'SoftwareLicense' as finalClass, hasArchitecture  FROM staging.justice_database
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'SoftwareLicense' as finalClass, hasArchitecture  FROM staging.justice_operatingSystem
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Ethernet_infrastructure' as finalClass, hasArchitecture  FROM staging.justice_computerNetwork
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'HDD_System' as finalClass, hasArchitecture  FROM staging.justice_storageDevice
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser, supportSystemType, 'Maintenance_System' as finalClass, hasArchitecture  FROM staging.justice_supportSystem
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Network_equipment' as finalClass, hasArchitecture  FROM staging.justice_networkDevice
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Peripheral_devices' as finalClass, hasArchitecture  FROM staging.justice_peripheralDevice
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Physical_Server' as finalClass, hasArchitecture  FROM staging.justice_server
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Rack_System' as finalClass, hasArchitecture  FROM staging.justice_rack
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Storage_system' as finalClass, hasArchitecture  FROM staging.justice_storageArray
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Virtual_machine' as finalClass, hasArchitecture  FROM staging.justice_virtualMachine
+UNION
+SELECT id,assetInPremises,assetInBuilding,usedByEmployee, hasResponsibleUser,null,'Workstation' as finalClass, hasArchitecture  FROM staging.justice_workstation</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MaintenanceSystemOnly</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>BuildingId  2</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>finalClass</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>Maintenance_System</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MaintenanceTypeId</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>N_maintenance_system_types</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>maintenanceTypeBg</name>
+        <field>name</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>maintenanceTypeId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>800</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>MaintenanceTypeLookUp</name>
+    <type>StreamLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <from>CodeList</from>
+    <input_sorted>N</input_sorted>
+    <preserve_memory>Y</preserve_memory>
+    <sorted_list>N</sorted_list>
+    <integer_pair>N</integer_pair>
+    <lookup>
+      <key>
+        <name>supportSystemType</name>
+        <field>Code</field>
+      </key>
+      <value>
+        <name>descrBg</name>
+        <rename>maintenanceTypeBg</rename>
+        <default />
+        <type>String</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>RoomsId</name>
+    <type>DBLookup</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>iTopDB</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema />
+      <table>Rooms</table>
+      <orderby />
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>Y</eat_row_on_failure>
+      <key>
+        <name>assetInPremises</name>
+        <field>legacy_room_id</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>id</name>
+        <rename>roomId</rename>
+        <default />
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Type</name>
+    <type>Janino</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>type</field_name>
+      <formula_string>"use"</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Type 2</name>
+    <type>Janino</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>type</field_name>
+      <formula_string>"responsable"</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step_error_handling>
+    <error>
+      <source_step>Insert/UpdatelnkAssetToDocuments</source_step>
+      <target_step>GetJobName 3</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Insert/UpdatelnkAssetToOrganizationEmployees</source_step>
+      <target_step>GetJobName 2</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Insert/UpdatelnkAssetToOrganizationEmployees 2</source_step>
+      <target_step>GetJobName 2 2</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Insert/UpdatelnkAssetToRooms</source_step>
+      <target_step>GetJobName</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Insert/UpdatelnkBuildingToEthernetInfrastructure</source_step>
+      <target_step>GetJobName 2 2 2</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Insert/UpdatelnkBuildingToMaintenanceSystems</source_step>
+      <target_step>GetJobName 2 2 2 2</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename>error</descriptions_valuename>
+      <fields_valuename>errorField</fields_valuename>
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+  </step_error_handling>
+  <slave-step-copy-partition-distribution>
+  </slave-step-copy-partition-distribution>
+  <slave_transformation>N</slave_transformation>
+</transformation>

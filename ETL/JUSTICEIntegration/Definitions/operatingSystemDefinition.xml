@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- Operating system -->
+<definition id="operatingSystem" parentId="software" isAbstract="false" type="object"> 
+	<fields>
+		<field name="type" type="an..180"><value>OPERATING_SYSTEM</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#OperatingSystem</value></field>
+		
+		<field name="operatingSystemGroup" type="an..2000" label="operatingSystemGroup.label" order="102" displayType="editable" previewEmpty="true" uri="inv:operatingSystemGroup" />
+		<field name="operatingSystemFamily" type="an..2000" label="operatingSystemFamily.label" order="103" displayType="editable" previewEmpty="true" uri="inv:operatingSystemFamily" />
+	</fields>
+</definition>

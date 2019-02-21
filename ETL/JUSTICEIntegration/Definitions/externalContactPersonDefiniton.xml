@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<definition id="externalContactPerson" parentId="person" type="object" isAbstract="false">
+    <fields>
+   		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Employee specific properties -->
+		<field name="type" type="an..50" order="40" label="GEO10001.type" mandatory="false" codelist="CL7" displayType="system" dmsType="emf:type" uri="emf:type" >
+			<value>EXTERNAL_PERSON</value>
+		</field>
+		<field name="rdf:type" type="URI" displayType="system" uri="rdf:type" dmsType="FORBIDDEN" >
+			<value>http://ittruse.ittbg.com/ontology/inventar#ExternalContactPerson</value>
+		</field>	
+		<!-- predefine range -->
+		<field name="isContactPersonOf" >
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Provider</control-param>
+			</control> 
+		</field>
+	</fields>
+</definition>

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<!-- System software -->
+<definition id="systemSoftware" parentId="software" isAbstract="false" type="object"> 
+	<fields>
+		<!-- System software specific properties -->
+		<field name="type" type="an..180"><value>SYSTEM_SOFTWARE</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#SystemSoftware</value></field>
+		
+		<field name="systemSoftwareType" type="an..2000" label="systemSoftwareType.label" order="102" displayType="editable" previewEmpty="true" uri="inv:systemSoftwareType" />
+		<field name="domainControllerAvailability" type="an..2000" label="domainControllerAvailability.label" order="103" previewEmpty="true" displayType="editable" uri="inv:domainControllerAvailability" />
+		<field name="domainControllerType" type="an..2000" label="domainControllerType.label" order="104" displayType="editable" previewEmpty="true" uri="inv:domainControllerType" />
+	</fields>
+</definition>

@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<!-- Justice BG Base Object definition -->
+<definition id="justiceBgObject" parentId="GEO10001" isAbstract="true" type="object"> 
+	<fields>
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Object specific properties -->
+		<field name="identifier" order="490" type="an..100" />
+		<field name="modifiedOn" order="510" type="dateTime" displayType="hidden" />
+		<field name="modifiedBy" order="520" type="uri" displayType="hidden">
+			<control id="PICKER">
+				<control-param id="range" name="range">emf:User</control-param>
+			</control>
+		</field>
+		<field name="emf:version" order="530" type="an..100" /> 
+		<field name="title" type="an..100" order="1" previewEmpty="true" mandatory="true"/>
+		<field name="description" order="102" type="an..2000" />
+		<field name="status" type="an..50" order="103" codelist="CL117" displayType="editable" />
+		<field name="name" type="an..180" order="140" displayType="system" />
+		<field name="outcome" type="an..50" displayType="hidden" uri="emf:outcome" />
+		<field name="references" type="uri" order="540" label="references.label" mandatory="false" displayType="editable" multiValued="true" previewEmpty="true" uri="emf:references">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Asset,inv:Contract,emf:Document,emf:Audio,emf:Video,emf:Image</control-param>
+			</control>
+		</field>
+		<field name="hasImages" type="uri" order="560" label="hasImages.label" displayType="editable" multiValued="true" previewEmpty="true" uri="inv:hasImages">
+			<control id="PICKER">
+				<control-param id="range" name="range">emf:Image</control-param>
+			</control>
+		</field>
+		<field name="hasRevision" order="590" type="uri" displayType="system">
+			<control id="PICKER">
+    		</control>
+    	</field>
+		<field name="isRevisionOf" order="600" displayType="system">
+			<control id="PICKER">
+    		</control>
+    	</field>
+		<field name="lastPublishedRevision" order="610" type="uri" displayType="system">
+			<control id="PICKER">
+    		</control>
+    	</field>
+		<field name="lastRevision" type="uri" order="620" displayType="system">
+			<control id="PICKER">
+    		</control>
+    	</field>
+		<field name="nextRevision" type="uri" order="630" displayType="system">
+			<control id="PICKER">
+    		</control>
+    	</field>
+			<field name="previousRevision" order="640" displayType="system">
+			<control id="PICKER">
+    		</control>
+	   	</field>
+		
+		<field name="hasThumbnail" type="uri" order="550" label="hasThumbnail" mandatory="false" displayType="readOnly" previewEmpty="false" uri="emf:hasThumbnail" >
+				<control id="PICKER">
+					<control-param id="range" name="range">emf:Image</control-param>
+				</control>
+			</field>
+		
+		<field name="hasWatcher" type="uri" order="580" displayType="editable" label="hasWatcher.label" mandatory="false" multiValued="true" previewEmpty="false" uri="emf:hasWatcher" >
+			<control id="PICKER">
+				<control-param id="range" name="range">emf:User</control-param>
+			</control>
+		</field>	
+		<field name="integrated" type="boolean" displayType="readOnly">
+			<value>false</value>
+		</field>
+	</fields>
+	
+	
+	<transitions>
+		<!-- Common transitions-->
+		<transition id="editDetails" label="editDetails.label" eventId="editDetails" purpose="editDetails" />
+		<transition id="saveAsTemplate" label="saveAsTemplate.label" eventId="saveAsTemplate" purpose="saveAsTemplate" />
+		<transition id="move" label="move.label" eventId="move" purpose="move" />
+		<transition id="lock" label="lock.label" eventId="lock" purpose="lock" />
+		<transition id="unlock" label="unlock.label" eventId="unlock" purpose="unlock" />
+		<transition id="managePermissions" label="managePermissions.label" eventId="managePermissions" purpose="managePermissions" />
+		<transition id="addThumbnail" label="addThumbnail.label" eventId="addThumbnail" purpose="addThumbnail" />	
+		<transition id="print" label="print.label" eventId="print" purpose="print" />
+		<transition id="printTab" label="printTab.label" eventId="printTab" purpose="printTab" />
+		<transition id="exportTabPDF" label="exportTabPDF.label" eventId="exportTabPDF" purpose="exportTabPDF" />
+		<transition id="exportPDF" label="exportPDF.label" eventId="exportPDF" purpose="exportPDF" />
+		<transition id="exportWord" label="exportWord.label" eventId="exportWord" purpose="exportWord" />
+		<transition id="exportTabWord" label="exportTabWord.label" eventId="exportTabWord" purpose="exportTabWord" />
+		<transition id="delete" label="delete.label" eventId="delete" purpose="delete" confirmation="confirmation.action"/>
+		<transition id="clone" label="clone.label" eventId="clone" purpose="clone" tooltip="clone.tooltip" />
+		<transition id="createInContext" eventId="createInContext" purpose="createInContext" label="createInContext.label" displayType="hidden" />
+		<transition id="addWatchers" label="addWatchers.label" eventId="addWatchers" purpose="addRelation" tooltip="addWatchers.tooltip">
+			<fields>
+				<field name="addWatchersConfig" type="an10">
+					<value>{
+								"predefinedTypes" : ["emf:User"],
+								"selection" : "multiple",
+								"relation" : ["emf:hasWatcher"],
+								"implicitParams" : {
+									"removeExisting" : false
+								}
+							}
+					</value>
+					<control id="configuration" />
+				</field>
+			</fields>
+		</transition>		
+	</transitions>
+	
+	<stateTransitions>	
+		<stateTransition from="INIT" transition="create" to="DRAFT" />	
+		
+		<stateTransition from="DRAFT" transition="editDetails" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="saveAsTemplate" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="move" to="DRAFT"/>
+		<stateTransition from="DRAFT" transition="lock" to="DRAFT"/>
+		<stateTransition from="DRAFT" transition="unlock" to="DRAFT"/>
+		<stateTransition from="DRAFT" transition="managePermissions" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="addThumbnail" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="print" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="printTab" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="exportTabPDF" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="exportPDF" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="exportWord" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="exportTabWord" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="addWatchers" to="DRAFT" />
+		<stateTransition from="DRAFT" transition="createInContext" to="DRAFT"/>
+		<stateTransition from="DRAFT" transition="delete" to="DELETED" />
+		<stateTransition from="DRAFT" transition="revertVersion" to="DRAFT"/>
+    </stateTransitions>
+</definition>

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<!-- Rack -->
+<definition id="rack" parentId="hardware" isAbstract="false" type="object"> 
+	<fields>	
+		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Network device specific properties -->
+		<field name="type" type="an..100"><value>RACK</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Rack</value></field>
+
+		<field name="rackType" type="an..2000" label="rackType.label" displayType="editable" previewEmpty="true" uri="inv:rackType" />
+		<field name="rackSize" type="an..2000" label="rackSize.label" displayType="editable" previewEmpty="true" uri="inv:rackSize" />
+		<field name="freeSpace" type="an..2000" label="freeSpace.label" displayType="editable" previewEmpty="true" uri="inv:freeSpace" />
+		<field name="connectivityDescription" type="an..2000" label="connectivityDescription.label" displayType="editable" previewEmpty="true" uri="inv:connectivityDescription" />
+		<field name="powerSupply" type="an..1000" label="powerSupply.label" mandatory="true" displayType="editable" previewEmpty="true" uri="inv:powerSupply" />
+	
+	</fields>
+</definition>

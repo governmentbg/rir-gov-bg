@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<!-- Server -->
+<definition id="server" parentId="computer" isAbstract="false" type="object">
+	<fields>
+		<field name="type" type="an..180"><value>SERVER</value></field>
+		<field name="rdf:type" type="uri"><value>http://ittruse.ittbg.com/ontology/inventar#Server</value></field>
+		<!--
+		<field name="scope" type="an..50" codelist="CL116">
+			<value>SCP021</value>
+		</field>
+        -->
+		<field name="chassis"			 type="an..2000" label="chassis.label" displayType="editable" uri="inv:chassis" />
+		<field name="raid"				 type="an..2000" label="raid.label" displayType="editable" uri="inv:raid" />
+		<field name="numberOfPortsInstalled" type="an..2000" label="numberOfPortsInstalled.label" displayType="editable" uri="inv:numberOfPortsInstalled" />
+		<field name="numberOfFreePorts"  type="an..2000" label="numberOfFreePorts.label" displayType="editable" uri="inv:numberOfFreePorts" />
+		<field name="numberOfSlots" 	 type="an..2000" label="numberOfSlots.label" displayType="editable" uri="inv:numberOfSlots" />
+		<field name="alarms" 			 type="an..2000" label="alarms.label" displayType="editable" uri="inv:alarms" />
+		<field name="tapeDrivesAndLibraries" type="an..2000" label="tapeDrivesAndLibraries.label" displayType="editable" uri="inv:tapeDrivesAndLibraries" />
+		<field name="hypervisor" 		 type="an..200" label="hypervisor.label" displayType="editable" uri="inv:hypervisor" />
+		<field name="otherParameters" 	 type="an..2000" label="otherParameters.label" displayType="editable" uri="inv:otherParameters" />
+	</fields>
+</definition>

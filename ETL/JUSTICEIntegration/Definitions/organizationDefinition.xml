@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<definition id="organization" parentId="justiceBgObject" type="object" isAbstract="true">
+    <fields>
+   		<!-- INSERT HEADERS HERE -->
+   		<field name="default_header" type="an..4096" label="ORGANIZAION_DEFAULT_HEADER" displayType="system" dmsType="FORBIDDEN"/>
+		<field name="breadcrumb_header" type="an..4096" label="ORGANIZAION_BREADCRUMB_HEADER" mandatory="false" displayType="system" dmsType="FORBIDDEN" />
+		
+		<!-- Organization specific properties -->
+		<field name="type" type="an..50" order="40" label="GEO10001.type" mandatory="false" codelist="CL7" displayType="system" dmsType="emf:type" uri="emf:type" >
+			<value>ORGANIZATION</value>
+		</field>
+		<field name="rdf:type" type="URI" displayType="system" uri="rdf:type" dmsType="FORBIDDEN" >
+			<value>http://www.ontotext.com/proton/protontop#Organization</value>
+		</field>
+		<field name="status" type="an..50" mandatory="true" />
+		
+		<field name="phoneNumber" type="an..100" label="phoneNumber.label" order="105" displayType="editable" uri="emf:phoneNumber"/>
+		<field name="address" type="an..2000" label="address.label" order="106" displayType="editable" uri="emf:address"/>
+		<field name="email" type="an..100" label="email.label" order="107" displayType="editable" uri="emf:email"/>
+		<field name="webSite" type="an..100" label="webSite.label" order="108" displayType="editable" uri="emf:webSite"/>
+		<field name="country" type="an..50" codelist="CL237" label="country.label" order="109" displayType="editable" uri="emf:territory"/>
+		<field name="timeZone" type="an..50" codelist="CL238" label="timeZone.label" order="110" displayType="editable" uri="emf:timeZone"/>
+		<field name="language" type="an..100"  label="language.label" order="111" displayType="editable" uri="ptop:language"/>
+		<field name="companyNumber" type="an..100"  label="companyNumber.label" order="104" displayType="editable" uri="emf:vatNumber"/>
+		
+		<field name="contactPersons" type="uri" label="contactPerson.label" order="112" displayType="editable" multiValued="true" uri="emf:contactPerson">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Person</control-param>
+			</control> 
+		</field>
+		<field name="hasSubsidiary" type="uri" label="hasSubsidiary.label" displayType="editable" multiValued="true" uri="emf:hasSubsidiary">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Organization</control-param>
+			</control> 
+		</field>
+		<field name="isSubsidiaryOf" type="uri" label="isSubsidiaryOf.label" displayType="editable" uri="emf:isSubsidiaryOf">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Organization</control-param>
+			</control> 
+		</field>
+		<field name="hasEmployee" type="uri" label="hasEmployee.label" order="113" displayType="editable" multiValued="true" uri="emf:hasEmployee">
+			<control id="PICKER">
+				<control-param id="range" name="range">ptop:Person</control-param>
+			</control>
+		</field>
+		<field name="providesService" type="uri" label="providesService.label" order="206" displayType="editable" multiValued="true" uri="inv:providesService">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:InformationalService</control-param>
+			</control>
+		</field>
+		<field name="isContractorOf" type="uri" label="isContractorOf.label" order="207" displayType="editable" multiValued="true" uri="inv:isContractorOf">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Contract</control-param>
+			</control>
+		</field>
+	</fields>
+	<transitions>
+		<!-- Common transitions-->
+		<transition id="editDetails" label="editDetails.label" eventId="editDetails" purpose="editDetails" />
+		<transition id="saveAsTemplate" label="saveAsTemplate.label" eventId="saveAsTemplate" purpose="saveAsTemplate" />
+		<transition id="move" label="move.label" eventId="move" purpose="move" />
+		<transition id="lock" label="lock.label" eventId="lock" purpose="lock" />
+		<transition id="unlock" label="unlock.label" eventId="unlock" purpose="unlock" />
+		<transition id="managePermissions" label="managePermissions.label" eventId="managePermissions" purpose="managePermissions" />
+		<transition id="addThumbnail" label="addThumbnail.label" eventId="addThumbnail" purpose="addThumbnail" />	
+		<transition id="print" label="print.label" eventId="print" purpose="print" />
+		<transition id="printTab" label="printTab.label" eventId="printTab" purpose="printTab" />
+		<transition id="exportTabPDF" label="exportTabPDF.label" eventId="exportTabPDF" purpose="exportTabPDF" />
+		<transition id="exportPDF" label="exportPDF.label" eventId="exportPDF" purpose="exportPDF" />
+		<transition id="exportWord" label="exportWord.label" eventId="exportWord" purpose="exportWord" />
+		<transition id="exportTabWord" label="exportTabWord.label" eventId="exportTabWord" purpose="exportTabWord" />
+		<transition id="delete" label="delete.label" eventId="delete" purpose="delete" confirmation="confirmation.action"/>
+		<transition id="addWatchers" label="addWatchers.label" eventId="addWatchers" purpose="addRelation" tooltip="addWatchers.tooltip">
+			<fields>
+				<field name="addWatchersConfig" type="an10">
+					<value>{
+								"predefinedTypes" : ["emf:User"],
+								"selection" : "multiple",
+								"relation" : ["emf:hasWatcher"],
+								"implicitParams" : {
+									"removeExisting" : false
+								}
+							}
+					</value>
+					<control id="configuration" />
+				</field>
+			</fields>
+		</transition>
+		
+		<!-- Specific transitions -->
+		<transition id="releaseInOperation" label="releaseInOperation.label" eventId="releaseInOperation" purpose="transition" />
+		<transition id="removeFromOperation" label="removeFromOperation.label" eventId="removeFromOperation" purpose="transition" />
+	</transitions>
+
+	<labels>
+       <label id="ORGANIZAION_DEFAULT_HEADER">
+              <value lang="en"><![CDATA[${eval(
+               ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+               ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+               ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                <span><img src="${thumbnailUri(64)}"/></span>
+                <span>
+                   <span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+                       <a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span>(Deleted) </span>)}
+                           ${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+                           	 <span data-property="title">${get([title])}</span> 								
+                           ).else(
+                               <span data-property="title">${get([title])}</span>                              								
+                           )}
+                       </a>
+                   </span>
+				<br />Type: <span data-property="type">${CL([type])}</span>				
+                <br /><span data-property="webSite">${get([webSite])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+               </span>)}]]></value>
+               <value lang="bg"><![CDATA[${eval(
+               ${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+               ${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+               ${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+                 <span><img src="${thumbnailUri(64)}"/></span>
+                <span>
+                   <span class="truncate-element${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}">
+                       <a ${var.href} class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)}">
+						${if(${get([emf:isDeleted])} == true).then(<span>(Изтрит) </span>)}
+                           ${if(${or(${var.isLatest} or ${var.isRevision})}).then(
+                               <span data-property="title">${get([title])}</span> 
+                           ).else(
+                               <span data-property="title">${get([title])} </span>  
+                           )}
+                       </a>
+                   </span>
+				<br />Тип: <span data-property="type">${CL([type])}</span>
+				 <br /><span data-property="webSite">${get([webSite])}</span>
+				${if(${get([lockedBy])} <> null).then(<br /><span class="banner label label-warning">${label(lockedBy)}${user([lockedBy])}</span>)}
+               </span>)}]]></value>
+		</label>
+		<label id="ORGANIZAION_BREADCRUMB_HEADER">
+			<value lang="bg"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Изтрит) </b></span>)}
+					<span data-property="title">${get([title])} </span>
+					<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+				</a>
+			</span>)}]]></value>
+			<value lang="en"><![CDATA[${eval(
+			${var.href= ${if(${get([emf:isDeleted])} == false).then(href="${link(currentInstance)}")} }
+			${var.isLatest=${if((${get([emf:revisionType])}).matches(.*?latest)).then(true).else(false)}}
+			${var.isRevision=${if((${get([emf:revisionType])}).matches(.*?revision)).then(true).else(false)}}
+			<span ><img src="${thumbnailUri(16)}"/></span>
+			${if(${get([lockedBy])} <> null).then(<span class="lock-label"><i class="fa fa-lock fa-lg"></i></span>)} 
+			<span>
+				<a class="instance-link ${if(${get([emf:isDeleted])} == true).then(instance-deleted).else(has-tooltip)} ${if(${var.isLatest}).then( latest-revision)}${if(${var.isRevision}).then( revision)}" ${var.href}>
+					${if(${get([emf:isDeleted])} == true).then(<span><b>(Deleted) </b></span>)}
+					<span data-property="title">${get([title])} </span>
+					<span data-property="type" style="color:#808080 !important">(${CL([type])})</span>
+				</a>
+			</span>)}]]></value>
+		</label>
+	</labels>
+
+</definition>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<definition id="employee" parentId="person" type="object" isAbstract="false">
+    <fields>
+   		<!-- INSERT HEADERS HERE -->
+		
+		<!-- Employee specific properties -->
+		<field name="type" type="an..50" order="40" label="GEO10001.type" mandatory="false" codelist="CL7" displayType="system" dmsType="emf:type" uri="emf:type" >
+			<value>EMPLOYEE</value>
+		</field>
+		<field name="rdf:type" type="URI" displayType="system" uri="rdf:type" dmsType="FORBIDDEN" >
+			<value>http://ittruse.ittbg.com/ontology/inventar#Employee</value>
+		</field>
+		<field name="competence" type="an..2000" label="competence.label" order="4" displayType="editable" uri="inv:competence" />
+		
+	    <field name="isEmployeeOf" type="uri" label="isEmployeeOf.label" order="3" displayType="editable" mandatory="true" previewEmpty="true" multiValued="false" uri="emf:isEmployeeOf">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:GovernmentStructure</control-param>
+			</control> 
+		</field>
+		
+		<field name="isResponsibleFor" type="uri" label="isResponsibleFor.label" order="20" displayType="editable" previewEmpty="true" multiValued="true" uri="inv:isResponsibleFor">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Asset,inv:Contract</control-param>
+			</control> 
+		</field>
+		
+	    <field name="isContactPersonForBuilding" type="uri" label="isContactPersonForBuilding.label" order="21" displayType="editable" previewEmpty="true" uri="inv:isContactPersonForBuilding">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Building</control-param>
+			</control> 
+		</field>		
+		
+	    <field name="employeeUsesAsset" type="uri" label="employeeUsesAsset.label" displayType="editable" order="22" previewEmpty="true" multiValued="true" uri="inv:employeeUsesAsset">
+			<control id="PICKER">
+				<control-param id="range" name="range">inv:Asset</control-param>
+			</control> 
+		</field>			
+		
+		
+		
+	</fields>
+</definition>
